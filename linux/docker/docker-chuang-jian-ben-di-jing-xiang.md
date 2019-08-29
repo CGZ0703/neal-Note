@@ -1,62 +1,73 @@
 # Docker创建本地镜像
 
 ## commit命令创建本地镜像
-### 创建java_base容器
+
+### 创建java\_base容器
+
 在centos为基础的镜像上，安装oracle jdk8，并创建一个txt文件，然后使用commit命令打成新镜像。
-```
+
+```text
 docker run -t -i centos
 ```
+
 启动一个centos的交互性容器。
 
-![](../../.gitbook/assets/linux/docker/Selection_012.jpg)
+![](../../.gitbook/assets/selection_012.jpg)
 
-记录[root@8916871c4954ae56f6cad215 /8916871c4954ae56f6cad215，后面会用到。
+记录\[root@8916871c4954ae56f6cad215 /8916871c4954ae56f6cad215，后面会用到。
 
 ### 安装Oracle JDK 8
+
 干净的centos容器中没有jdk，我们马上要安装：yum install java。
 
 > 主机和容器之间传输文件的话需要用到容器的ID全称。
-> 1. 使用容器的短ID或指定的name获取容器的ID全称
-> ![](/.gitbook/assets/linux/docker/Selection_013.jpg)
+>
+>  1. 使用容器的短ID或指定的name获取容器的ID全称
+>
+>  ![](../../.gitbook/assets/selection_013.jpg) 
+>
 > 2. 使用容器的ID全称进行本机和文件的传输
-> - docker cp [OPTIONS] CONTAINER:SRC_PATH DEST_PATH|-
->   - docker cp ID全称:容器文件路径 本地路径
-> - docker cp [OPTIONS] SRC_PATH|- CONTAINER:DEST_PATH
->   - docker cp 本地文件路径 ID全称:容器路径
-> - Options:
->   - -a, --archive       Archive mode (copy all uid/gid information)
->   - -L, --follow-link   Always follow symbol link in SRC_PATH
-> 
-> ![](../../.gitbook/assets/linux/docker/Selection_014.jpg)
+>
+> * docker cp \[OPTIONS\] CONTAINER:SRC\_PATH DEST\_PATH\|-
+>   * docker cp ID全称:容器文件路径 本地路径
+> * docker cp \[OPTIONS\] SRC\_PATH\|- CONTAINER:DEST\_PATH
+>   * docker cp 本地文件路径 ID全称:容器路径
+> * Options:
+>   * -a, --archive       Archive mode \(copy all uid/gid information\)
+>   * -L, --follow-link   Always follow symbol link in SRC\_PATH
+>
+> ![](../../.gitbook/assets/selection_014.jpg)
 
 使用主机发送过来的jdk安装并配置Java环境
 
-![](../../.gitbook/assets/linux/docker/Selection_015.jpg)
+![](../../.gitbook/assets/selection_015.jpg)
 
 退出容器 ： exit
 
-
 ### 提交容器到本地
-```
+
+```text
 docker commit -m="java_base" --author="neal_zhao" 8916871c4954 neal_zhao/java_base:v1
 ```
+
 使用commit命令将容器里的所有修改提交到本地库中，形成以一个全新的镜像，会返回新镜像的完整ID。
 
-![](../../.gitbook/assets/linux/docker/Selection_018.jpg)
+![](../../.gitbook/assets/selection_018.jpg)
 
-完整ID可以通过docker ps -l -q(用于获取最近创建的容器ID)命令得到。
+完整ID可以通过docker ps -l -q\(用于获取最近创建的容器ID\)命令得到。
 
-- -m：描述我们此次创建image的信息。
-- --author：用来指定作者。
-- 8916871c4954：被修改的基础镜像ID。
-- neal_zhao/java_base:v1：仓库名/镜像名:TAG名。
-
+* -m：描述我们此次创建image的信息。
+* --author：用来指定作者。
+* 8916871c4954：被修改的基础镜像ID。
+* neal\_zhao/java\_base:v1：仓库名/镜像名:TAG名。
 
 ## Dockerfile文件
+
 ### 创建Dockerfile文件
+
 将需要对镜像进行的操作全部写到一个文件中，然后使用docker build命令从这个文件中创建镜像。这种方法可以使镜像的创建变得透明和独立化，并且创建过程可以被重复执行。Dockerfile文件以行为单位，行首为Dockerfile命令，命令都是大写形式，其后紧跟着的是命令的参数。
 
-```
+```text
 #Version 1.0.1
 FROM centos:latest
 
@@ -105,29 +116,31 @@ ONBUILD RUN echo "on build excuted" >> onbuild.txt
 ```
 
 ### 构建Dockerfile镜像
-```
+
+```text
 $ docker build -t neal_zhao/build_dockerfile:build_dockerfile_demo .
 ...
 Successfully build [IMAGE_ID]
 ```
 
-- -t参数用来指定镜像的命名空间、仓库名及TAG。
-- 这个值可以在镜像创建成功之后通过tag命令修改。
-  - 事实上是创建一个镜像的两个名称引用，指向的是同一个镜像实体[IMAGE_ID]
-- 紧跟-t参数的是Dockerfile文件所在的相对目录，本例使用的是当前目录，即"."
+* -t参数用来指定镜像的命名空间、仓库名及TAG。
+* 这个值可以在镜像创建成功之后通过tag命令修改。
+  * 事实上是创建一个镜像的两个名称引用，指向的是同一个镜像实体\[IMAGE\_ID\]
+* 紧跟-t参数的是Dockerfile文件所在的相对目录，本例使用的是当前目录，即"."
 
-docker tag neal_zhao/build_dockerfile:build_dockerfile_demo neal_zhao/build_dockerfile:build_dockerfile_demo2
+docker tag neal\_zhao/build\_dockerfile:build\_dockerfile\_demo neal\_zhao/build\_dockerfile:build\_dockerfile\_demo2
 
 ### Dockerfile在网络上
 
 可以把dockerfile放在github上，
 
-比如地址是https://github.com/xxx/docker/master/dockerfile
+比如地址是[https://github.com/xxx/docker/master/dockerfile](https://github.com/xxx/docker/master/dockerfile)
 
-clone地址是https://github.com/xxx/docker.git
+clone地址是[https://github.com/xxx/docker.git](https://github.com/xxx/docker.git)
 
 执行命令：
-```
+
+```text
 docker build -t xxx/test:build_dockerfile_test_github https://github.com/xxx/docker.git
 ```
 
