@@ -37,8 +37,6 @@ Commands:
 
 其中，tag可以使用通配符进行匹配。
 
-
-
 ```text
 docker inspect [NAME]/[CONTAINER ID]
 ```

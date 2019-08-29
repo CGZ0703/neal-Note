@@ -28,6 +28,7 @@
 * [Docker](linux/docker/README.md)
   * [Docker容器](linux/docker/docker-rong-qi.md)
   * [Docker镜像](linux/docker/docker-jing-xiang.md)
+  * [Docker创建本地镜像](linux/docker/docker-chuang-jian-ben-di-jing-xiang.md)
 
 ## Hadoop
 
