@@ -8,7 +8,7 @@ docker run -t -i centos
 ```
 启动一个centos的交互性容器。
 
-![](/.gitbook/assets/linux/docker/Selection_012.jpg)
+![](../../.gitbook/assets/linux/docker/Selection_012.jpg)
 
 记录[root@8916871c4954ae56f6cad215 /8916871c4954ae56f6cad215，后面会用到。
 
@@ -27,11 +27,11 @@ docker run -t -i centos
 >   - -a, --archive       Archive mode (copy all uid/gid information)
 >   - -L, --follow-link   Always follow symbol link in SRC_PATH
 > 
-> ![](/.gitbook/assets/linux/docker/Selection_014.jpg)
+> ![](../../.gitbook/assets/linux/docker/Selection_014.jpg)
 
 使用主机发送过来的jdk安装并配置Java环境
 
-![](/.gitbook/assets/linux/docker/Selection_015.jpg)
+![](../../.gitbook/assets/linux/docker/Selection_015.jpg)
 
 退出容器 ： exit
 
@@ -42,7 +42,7 @@ docker commit -m="java_base" --author="neal_zhao" 8916871c4954 neal_zhao/java_ba
 ```
 使用commit命令将容器里的所有修改提交到本地库中，形成以一个全新的镜像，会返回新镜像的完整ID。
 
-![](/.gitbook/assets/linux/docker/Selection_018.jpg)
+![](../../.gitbook/assets/linux/docker/Selection_018.jpg)
 
 完整ID可以通过docker ps -l -q(用于获取最近创建的容器ID)命令得到。
 
