@@ -1,7 +1,9 @@
 # Docker运行Hadoop
 
 ```text
-$ docker run -it -v /home/hadoop01/build:/root/build -h hadoop01 --name hadoop01 centos /bin/bash
+$ docker run -it -v /home/hadoop01/build:/root/build -h hadoop01 -v /etc/localtime:/etc/localtime:ro --name hadoop01 neal_zhao/hadoop_basic /bin/bash
+
+-- /usr/share/zoneinfo/Asia/Shanghai /etc/localtime
 ```
 
 以centos镜像启动一个容器，容器名是master，主机名是master，并且将基于容器的centos系统的/root/build目录与本地/home/hadoop/build共享。
@@ -14,4 +16,10 @@ $ docker run -it -v /home/hadoop01/build:/root/build -h hadoop01 --name hadoop01
 * /bin/bash 使用bash命令
 
 
+docker commit -m="java_base" --author="neal_zhao" 8916871c4954 neal_zhao/java_base:v1
 
+docker run --name hadoop01 --hostname hadoop01 -d -P -p 50070:50070 -p 8088:8088 neal_zhao/hadoop-base:v1.0.0
+
+docker run --name hadoop02 --hostname hadoop02 -d -P neal_zhao/hadoop-base:v1.0.0
+
+docker run --name hadoop03 --hostname hadoop03 -d -P neal_zhao/hadoop-base:v1.0.0

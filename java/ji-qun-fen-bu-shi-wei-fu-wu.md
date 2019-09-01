@@ -16,7 +16,7 @@
 
 1。集群是什么
 
-> **電腦叢集**（英語：computer cluster）是一組鬆散或緊密連接在一起工作的[電腦](https://zh.wikipedia.org/wiki/%E9%9B%BB%E5%AD%90%E8%A8%88%E7%AE%97%E6%A9%9F)。由於這些電腦協同工作，在許多方面它們可以被視為單個系統。與[網格電腦](https://zh.wikipedia.org/wiki/%E7%BD%91%E6%A0%BC%E8%AE%A1%E7%AE%97)不同，電腦叢集將每個[節點](https://zh.wikipedia.org/w/index.php?title=%E8%8A%82%E7%82%B9_%28%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%A7%91%E5%AD%A6%29&action=edit&redlink=1)設定為執行相同的任務，由軟體控制和排程。
+> **電腦叢集**（英語：computer cluster）是一組鬆散或緊密連接在一起工作的電腦。由於這些電腦協同工作，在許多方面它們可以被視為單個系統。與網格電腦不同，電腦叢集將每個節點設定為執行相同的任務，由軟體控制和排程。
 >
 > --------  維基百科，自由的百科全書
 
@@ -27,7 +27,7 @@
 
 2。分布式是什么
 
-> 在[電腦科學](https://zh.wikipedia.org/wiki/%E8%A8%88%E7%AE%97%E6%A9%9F%E7%A7%91%E5%AD%B8)中，**分散式運算**（英語：Distributed computing），又譯為**分布式計算**。這個研究領域，主要研究**分散式系統**（Distributed system）如何進行計算。分散式系統是一組[電腦](https://zh.wikipedia.org/wiki/%E9%9B%BB%E5%AD%90%E8%A8%88%E7%AE%97%E6%A9%9F)，透過[網路](https://zh.wikipedia.org/wiki/%E8%A8%88%E7%AE%97%E6%A9%9F%E7%B6%B2%E7%B5%A1)相互連接[傳遞訊息](https://zh.wikipedia.org/wiki/%E8%A8%8A%E6%81%AF%E5%82%B3%E9%81%9E_%28%E8%BB%9F%E9%AB%94%29)與通訊後並協調它們的行為而形成的系統。[\[1\]](https://zh.wikipedia.org/wiki/%E5%88%86%E5%B8%83%E5%BC%8F%E8%AE%A1%E7%AE%97#cite_note-Coulouris-1)元件之間彼此進行互動以實現一個共同的目標。把需要進行大量計算的工程資料分割成小塊，由多台[電腦](https://zh.wikipedia.org/wiki/%E9%9B%BB%E5%AD%90%E8%A8%88%E7%AE%97%E6%A9%9F)分別計算，再上傳運算結果後，將結果統一合併得出資料結論的科學。分散式系統的例子來自有所不同的[面向服務的架構](https://zh.wikipedia.org/wiki/%E9%9D%A2%E5%90%91%E6%9C%8D%E5%8A%A1%E7%9A%84%E6%9E%B6%E6%9E%84)，[大型多人線上遊戲](https://zh.wikipedia.org/wiki/%E5%A4%A7%E5%9E%8B%E5%A4%9A%E4%BA%BA%E7%B7%9A%E4%B8%8A%E9%81%8A%E6%88%B2)，[對等網路](https://zh.wikipedia.org/wiki/%E5%AF%B9%E7%AD%89%E7%BD%91%E7%BB%9C)應用。
+> 在電腦科學中，**分散式運算**（英語：Distributed computing），又譯為**分布式計算**。這個研究領域，主要研究**分散式系統**（Distributed system）如何進行計算。分散式系統是一組電腦，透過網路相互連接傳遞訊息與通訊後並協調它們的行為而形成的系統。元件之間彼此進行互動以實現一個共同的目標。把需要進行大量計算的工程資料分割成小塊，由多台電腦分別計算，再上傳運算結果後，將結果統一合併得出資料結論的科學。分散式系統的例子來自有所不同的面向服務的架構，大型多人線上遊戲，對等網路應用。
 >
 > --------  維基百科，自由的百科全書
 

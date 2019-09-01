@@ -20,7 +20,7 @@ ps:只要是被线程私有独享的一律没有会后,只有是线程共享才�
 
 栈中的数据都是以栈帧（Stack Frame）的格式存在，栈帧是一个内存区块，是一个数据集，是一个有关方法 \(Method\)和运行期数据的数据集，当一个方法A被调用时就产生了一个栈帧 F1，并被压入到栈中
 
-![](../.gitbook/assets/image%20%289%29.png)
+![](../.gitbook/assets/java/image%20%289%29.png)
 
 两个栈相关的常见错误
 
@@ -58,7 +58,7 @@ ps:直白一点其实就是方法区就是永久带的一种落地实现
 
 常量池（Constant Pool）是方法区的一部分，Class文件除了有类的版本、字段、方法、接口等描述信息外，还有 一项信息就是常量池，这部分内容将在类加载后进入方法区的运行时常量池中存放。
 
-![](../.gitbook/assets/image%20%281%29.png)
+![](../.gitbook/assets/java/image%20%281%29.png)
 
 ## 堆内存调优
 
@@ -66,11 +66,11 @@ JVM垃圾收集\(Java Garbage Collection \)本次均以JDK1.8+HotSpot为例:
 
 ### Java7
 
-![](../.gitbook/assets/image%20%2814%29.png)
+![](../.gitbook/assets/java/image%20%2814%29.png)
 
 ### Java8
 
-![](../.gitbook/assets/image%20%2813%29.png)
+![](../.gitbook/assets/java/image%20%2813%29.png)
 
 ### Java内存调优计算
 

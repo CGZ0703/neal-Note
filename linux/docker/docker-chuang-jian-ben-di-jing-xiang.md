@@ -12,7 +12,7 @@ docker run -t -i centos
 
 启动一个centos的交互性容器。
 
-![](../../.gitbook/assets/selection_012.jpg)
+![](../../.gitbook/assets/linux/docker/selection_012.jpg)
 
 记录\[root@8916871c4954ae56f6cad215 /8916871c4954ae56f6cad215，后面会用到。
 
@@ -23,8 +23,10 @@ docker run -t -i centos
 > 主机和容器之间传输文件的话需要用到容器的ID全称。
 >
 >  1. 使用容器的短ID或指定的name获取容器的ID全称
->
->  ![](../../.gitbook/assets/selection_013.jpg) 
+>  
+>       `docker inspect -f '{{.Id}}' java_base`
+>  
+>  ![](../../.gitbook/assets/linux/docker/selection_013.jpg) 
 >
 > 2. 使用容器的ID全称进行本机和文件的传输
 >
@@ -36,30 +38,31 @@ docker run -t -i centos
 >   * -a, --archive       Archive mode \(copy all uid/gid information\)
 >   * -L, --follow-link   Always follow symbol link in SRC\_PATH
 >
-> ![](../../.gitbook/assets/selection_014.jpg)
+> ![](../../.gitbook/assets/linux/docker/selection_014.jpg)
 
 使用主机发送过来的jdk安装并配置Java环境
 
-![](../../.gitbook/assets/selection_015.jpg)
+![](../../.gitbook/assets/linux/docker/selection_015.jpg)
 
 退出容器 ： exit
 
 ### 提交容器到本地
 
 ```text
-docker commit -m="java_base" --author="neal_zhao" 8916871c4954 neal_zhao/java_base:v1
+docker commit 54e195ad4996 neal_zhao/hadoop_basic
 ```
 
 使用commit命令将容器里的所有修改提交到本地库中，形成以一个全新的镜像，会返回新镜像的完整ID。
+sha256:04055d570e2eedf4539ade86d5f34d78b6a2d92e05a1fecdbe4227555aa885ba
 
-![](../../.gitbook/assets/selection_018.jpg)
+![](../../.gitbook/assets/linux/docker/Selection_030.jpg)
 
 完整ID可以通过docker ps -l -q\(用于获取最近创建的容器ID\)命令得到。
 
 * -m：描述我们此次创建image的信息。
 * --author：用来指定作者。
-* 8916871c4954：被修改的基础镜像ID。
-* neal\_zhao/java\_base:v1：仓库名/镜像名:TAG名。
+* 54e195ad4996：被修改的基础镜像ID。
+* neal_zhao/hadoop_basic：仓库名/镜像名:TAG名。
 
 ## Dockerfile文件
 
@@ -134,9 +137,9 @@ docker tag neal\_zhao/build\_dockerfile:build\_dockerfile\_demo neal\_zhao/build
 
 可以把dockerfile放在github上，
 
-比如地址是[https://github.com/xxx/docker/master/dockerfile](https://github.com/xxx/docker/master/dockerfile)
+比如地址是https://github.com/xxx/docker/master/dockerfile
 
-clone地址是[https://github.com/xxx/docker.git](https://github.com/xxx/docker.git)
+clone地址是https://github.com/xxx/docker.git
 
 执行命令：
 

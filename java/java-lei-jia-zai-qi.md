@@ -35,7 +35,7 @@ JVM把描述类的数据从Class文件加载到内存，并对数据进行校验
 2. 通过数组定义来引用类，不会触发类的初始化；
 3. 常量在编译阶段会存入调用类的常量池中，本质上并没有直接引用到定义常量的类，因为不会触发定义常量的类初始化；
 
-![&#x7C7B;&#x52A0;&#x8F7D;&#x6B65;&#x9AA4;](../.gitbook/assets/image%20%284%29.png)
+![](../.gitbook/assets/java/image%20%284%29.png)
 
 * 加载
   1. 通过类的全限定名称获取定义此类的二进制流；
@@ -57,16 +57,9 @@ JVM把描述类的数据从Class文件加载到内存，并对数据进行校验
     2. &lt;clinit&gt;\(\)方法与类实例构造函数不同，虚拟机会保证父类的&lt;clinit&gt;\(\)执行完毕后再执行子类的&lt;clinit&gt;\(\)方法；
 
 
-
-
-
-
-
-
-
 负责加载class文件，class文件在文件开头有特定的文件标示，并且ClassLoader只负责class文件的加载，至于它 是否可以运行，则由Execution Engine决定
 
-![](../.gitbook/assets/image%20%285%29.png)
+![](../.gitbook/assets/java/image%20%285%29.png)
 
 1. **根类加载器（Bootstrap ClassLoader）：**这个类加载器负责放在\lib目录中的，或者被-Xbootclasspath参数所指定的路径 中的，并且是虚拟机识别的类库。用户无法直接使用。\(就相当于是为什么我们可以通过new创建出来对象\)，比如：String,System这类
 2. **拓展类加载器（Extension ClassLoader）**：这个类加载器由sun.misc.Launcher$AppClassLoader实现。它负责\lib\ext目录 中的，或者被java.ext.dirs系统变量所指定的路径中的所有类库。用户可以直接使用。 加载JRE的拓展类库
@@ -79,7 +72,7 @@ JVM把描述类的数据从Class文件加载到内存，并对数据进行校验
 
 一个类加载器查找class和resource时，是通过“委托模式”进行的，它首先判断这个class是不是已经加载成功，如果 没有的话它并不是自己进行查找，而是先通过父加载器，然后递归下去，直到Bootstrap ClassLoader，如果 Bootstrap classloader找到了，直接返回，如果没有找到，则一级一级返回，最后到达自身去查找这些对象。这种 机制就叫做双亲委托。
 
-![](../.gitbook/assets/image%20%287%29.png)
+![](../.gitbook/assets/java/image%20%287%29.png)
 
 1. 一个AppClassLoader查找资源时，先看看缓存是否有，缓存有从缓存中获取，否则委托给父加载器。 
 2. 递归，重复第1部的操作。 
@@ -118,7 +111,6 @@ public static void main(String[] args)
 了解:双亲委托和沙箱机制不是绝对安全的因为可以写自定义ClassLoader,自定义的类加载器里面强制加载自定义 的 java.lang.String 类，不去通过调用父加载器 ,完成类的加载. 
 
 当ClassLoader加载成功后,Execution Engine执行引擎负责解释命令，提交操作系统执行
-
 
 
 Java类随着加载它的类加载器一起具备了一种带有优先级的层次关系。比如，Java中的Object类，它存放在rt.jar之中,无论哪一个类加载器要加载这个类，最终都是委派给处于模型最顶端的启动类加载器进行加载，因此Object在各种类加载环境中都是同一个类。如果不采用双亲委派模型，那么由各个类加载器自己取加载的话，那么系统中会存在多种不同的Object类。
