@@ -35,3 +35,7 @@
 * [Hadoop学习内容](hadoop/hadoop-xue-xi-nei-rong.md)
 * [Docker运行Hadoop](hadoop/docker-yun-hang-hadoop.md)
 
+## Hive
+
+* [Hive学习内容](hive/hive-xue-xi-nei-rong.md)
+* [Hive使用](hive/hive-shi-yong.md)
