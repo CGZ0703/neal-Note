@@ -2,6 +2,11 @@
 
 * [This is Neal Zhao's Space](README.md)
 
+## Algorithm
+
+* [Algorithm](algorithm/algorithm-xue-xi-nei-rong.md)
+* [一致性哈希算法](algorithm/yi-zhi-xing-ha-xi-suan-fa.md)
+
 ## java
 
 * [Java学习内容](java/java-xue-xi-nei-rong.md)
