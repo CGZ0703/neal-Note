@@ -22,8 +22,8 @@
 
 * 1、READ UNCOMMITTED:脏读、不可重复读、虚读都有可能发生。
 * 2、READ COMMITTED:避免脏读。不可重复读、虚读都有可能发生。\(Oracle默认\)
-* 4、REPEATABLE READ:避免脏读、不可重复读。虚读有可能发生。\(MySQL默认\)
-* 8、SERIALIZABLE:脏读、不可重复读、虚读都避免发生。
+* 3、REPEATABLE READ:避免脏读、不可重复读。虚读有可能发生。\(MySQL默认\)
+* 4、SERIALIZABLE:脏读、不可重复读、虚读都避免发生。
 * 级别越高，性能越低，数据越安全
 * mysql中
   * 查看当前事务 SELECT @@TX\_ISOLATION
