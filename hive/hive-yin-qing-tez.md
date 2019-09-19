@@ -21,38 +21,51 @@ yum install -y gcc-c++ openssl-devel glibc autoconf automake libtool<br>
 也可以直接下载二进制包，解压后可跳过此步骤
 
 1. 安装protobuf-2.5.0
-> cd protobuf-2.5.0
-> ./configure
-> make
-> make install
-> 使用protoc --version 验证是否成功
-2. 解压源码包
-3. 修改配置: vim pom.xml
-> <hadoop.version>~~2.7.0~~</hadoop.version>
-> 此处根据自己的Hadoop版本来改  ==>
-> <hadoop.version>2.9.2</hadoop.version>
-> 
-> <!--
-> 这两个模块注释掉
-> <module>tez-ext-serive-test</module>
-> <module>tez-ui</module>
-> -->
 
-4. 使用maven编译
+> cd protobuf-2.5.0<br>
+> ./configure<br>
+> make<br>
+> make install<br>
+> 使用protoc --version 验证是否成功<br>
+
+2. 解压源码包
+
+3. 修改配置: vim pom.xml
+
+```xml
+<hadoop.version>2.7.0</hadoop.version>
+此处根据自己的Hadoop版本来改  ==>
+<hadoop.version>2.9.2</hadoop.version>
+
+<!--
+这两个模块注释掉
+<module>tez-ext-serive-test</module>
+<module>tez-ui</module>
+-->
+```
+
+1. 使用maven编译
 > mvn clean package -DskipTests=true -Dmaven.javadoc.skip=true
 
 
 ## 跟Hadoop、Hive整合
-1. 进入./tez-dist/target
+
+1. 进入./tez-dist/target<br>
+
 ![](../.gitbook/assets/hive/2019-09-19_11-01.png)
 
 2. 将tez-0.9.2.tar.gz压缩包上传到HDFS上：/tez-0.9.2
+
+```
 hadoop fs -mkdir /tez-0.9.2
 hadoop fs -put ./tez-0.9.2.tar.gz /tez-0.9.2
+```
 
 3. 在TEZ_HOME下创建conf目录并编辑tez-site.xml
-mkdir conf
-vim tez-site.xml
+
+mkdir conf<br>
+vim tez-site.xml<br>
+
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
 <?xml-stylesheet type="text/xsl" href="configuration.xsl"?>
@@ -65,12 +78,14 @@ vim tez-site.xml
 ```
 
 4. 将tez-0.9.2移动到想要的位置并配置环境变量
-export TEZ_HOME=path/tez-0.9.2
-export TEZ_CONF_DIR=$TEZ_HOME/conf
+
+export TEZ_HOME=path/tez-0.9.2<br>
+export TEZ_CONF_DIR=$TEZ_HOME/conf<br>
 
 5. 编辑Hadoop配置
-cd $HADOOP_HOME/etc/hadoop
-vim hadoop-env.sh
+
+cd $HADOOP_HOME/etc/hadoop<br>
+vim hadoop-env.sh<br>
 
 ```bash
 export TEZ_HOME=/home/tez-0.9.2
@@ -107,12 +122,12 @@ vim $HIVE_HOME/conf/hive-site.xml
 
 ## 问题
 
-找不到DAG类
+1. 找不到DAG类
 
-- 二进制包需要上传 $TEZ_HOME/share/tez.tar.gz
-
+   二进制包需要上传 $TEZ_HOME/share/tez.tar.gz
 
 2. 机器内存不足 
+
 vim $TEZ_CONF_DIR/tez-site.xml
 
 ```xml
@@ -123,14 +138,13 @@ vim $TEZ_CONF_DIR/tez-site.xml
   </property>
 ```
 
-
 3. tez-ui
 
-修改 apache-tez-0.9.2-src/tez-ui/pom.xml文件，
+   修改 apache-tez-0.9.2-src/tez-ui/pom.xml文件，
 
-在`<artifactId>exec-maven-plugin</artifactId>`下面的`<arguments></arguments>`中
+   在`<artifactId>exec-maven-plugin</artifactId>`下面的`<arguments></arguments>`中
 
-追加`<argument>--allow-root</argument>`，如下部分：
+   追加`<argument>--allow-root</argument>`，如下部分：
 
 ```xml
 <plugin>
@@ -166,7 +180,6 @@ vim $TEZ_CONF_DIR/tez-site.xml
 [INFO] -------------------------------------------------------------
 ```
 
-
 修改`apache-tez-0.9.2-src/tez-mapreduce/src/main/java/org/apache/tez/mapreduce/hadoop/mapreduce/JobContextImpl.java`文件：在最后追加下面代码
 
 ```java
@@ -183,20 +196,19 @@ vim $TEZ_CONF_DIR/tez-site.xml
 
 5. 整合lzo
 
-拷贝lzo包到解压后的lib目录
+   拷贝lzo包到解压后的lib目录
 
-cp hadoop-lzo/target/hadoop-lzo-0.4.21-SNAPSHOT.jar $TEZ_HOME/lib
+   `cp hadoop-lzo/target/hadoop-lzo-0.4.21-SNAPSHOT.jar $TEZ_HOME/lib`
 
+   重新打包 tez
 
-重新打包 tez
+   `cd $TEZ_HOME`<br>
+   `tar -zcf tez-0.9.2.tar.gz ./`
 
-cd $TEZ_HOME
+   更新hdfs上的tez包
 
-tar -zcf tez-0.9.2.tar.gz ./
-
-更新hdfs上的tez包
-hadoop fs -rm /tez-0.9.2/tez-0.9.2.tar.gz
-hadoop fs -put ./ tez-0.9.2.tar.gz /tez-0.9.2/
+   `hadoop fs -rm /tez-0.9.2/tez-0.9.2.tar.gz`<br>
+   `hadoop fs -put ./ tez-0.9.2.tar.gz /tez-0.9.2/`
 
 
 
