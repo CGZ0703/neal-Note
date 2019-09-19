@@ -4,7 +4,7 @@
 
 /root/.vimrc
 
-```bash
+```
 set nu
 set autoread
 set autoindent
@@ -19,6 +19,7 @@ set cuc
 set cul
 colorscheme desert
 syntax on
+"使用F9进入粘贴模式，防止格式乱（自动缩进
 set pastetoggle=<F9>
 
 filetype plugin indent on 

@@ -43,4 +43,5 @@
 ## Hive
 
 * [Hive学习内容](hive/hive-xue-xi-nei-rong.md)
-* [Hive使用](hive/hive-shi-yong.md)
+* [Hive使用](hive/hive-shi-yong-ddl.md)
+* [Hive引擎Tez](hive/hive-yin-qing-tez.md)
