@@ -1,0 +1,54 @@
+{
+    "title": "JustNote",
+    "description": "一本简单的运维笔记，用来记录和分享自己的学习与成长之路。",
+    "language": "zh-hans",
+    "plugins": [
+        "-disqus",
+        "github",
+        "editlink",
+        "prism",
+        "-highlight",
+        "-baidu",
+        "splitter",
+        "-sitemap",
+        "tbfed-pagefooter",
+        "fontsettings",
+        "simple-page-toc",
+        "links",
+        "expandable-chapters-small",
+        "sitemap-general",
+        "lunr",
+        "search",
+        "search-plus"
+    ],
+    "pluginsConfig": {
+        "tbfed-pagefooter": {
+            "copyright": "",
+            "modify_label": "该文件修订时间：",
+            "modify_format": "YYYY-MM-DD HH:mm:ss"
+        },
+        "simple-page-toc": {
+            "maxDepth": 3,
+            "skipFirstH1": true
+        },
+        "links": {
+            "gitbook": false,
+            "sharing": {
+                "google": false,
+                "facebook": false,
+                "twitter": false,
+                "all": false
+            }
+        },
+        "github": {
+            "url": "https://github.com/CGZ0703/neal-Note/"
+        },
+        "editlink": {
+            "base": "https://github.com/CGZ0703",
+            "label": "编辑本页面"
+        },
+        "sitemap-general": {
+            "prefix": "https://neal73.gitbook.io/space"
+        }
+    }
+}

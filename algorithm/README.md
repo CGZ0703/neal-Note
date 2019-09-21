@@ -1,5 +1,6 @@
-# Algorithm学习内容
+# Algorithm
 
+数学专业出身的我，算法可不能落下。
 
-### [一致性哈希算法](./yi-zhi-xing-ha-xi-suan-fa.md)
+虽然很久没看了。T.T
 

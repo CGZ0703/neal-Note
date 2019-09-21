@@ -1,11 +1,6 @@
-# Linux学习内容
+# Linux
 
 
-### [Vim](./vim.md)
+作为一名程序猿玩不好Linux怎么行。（MS系除外
 
-
-### [Ubuntu换源](./ubuntu-huan-yuan.md)
-
-
-## [Docker](./docker/README.md)
 

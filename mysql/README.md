@@ -1,8 +1,7 @@
-# MySQL学习内容
+# MySQL
 
 
-### [MySQL事务](./mysql-shi-wu.md)
+MySQL
 
-
-### [MySQL经典50题](./mysql-jing-dian-50-ti.md)
+简单即有效
 
