@@ -52,7 +52,7 @@ make install
 
 ### 1.进入./tez-dist/target
 
-![](../.gitbook/assets/hive/2019-09-19_11-01.png)
+![](../../.gitbook/assets/hadoop/hive/2019-09-19_11-01.png)
 
 ### 2.将tez-0.9.2.tar.gz压缩包上传到HDFS上：/tez-0.9.2
 
@@ -96,7 +96,7 @@ set hive.execution.engine=tez;
 执行语句进行测试  
 `select uid,count(1) from test group by uid;`
 
-![](../.gitbook/assets/hive/2019-09-19_11-16.png)
+![](../../.gitbook/assets/hadoop/hive/2019-09-19_11-16.png)
 
 
 ## 配置Hive默认引擎
