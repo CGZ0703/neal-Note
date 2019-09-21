@@ -1,4 +1,4 @@
-# MySQL
+# MySQL经典50题
 
 ```text
 -- 建表
