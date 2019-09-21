@@ -1,6 +1,8 @@
 # MySQL学习内容
 
-{% page-ref page="mysql/mysql-shi-wu.md" %}
 
-{% page-ref page="mysql/mysql-jing-dian-50-ti.md" %}
+## [MySQL事务](./mysql-shi-wu.md)
+
+
+## [MySQL经典50题](./mysql-jing-dian-50-ti.md)
 

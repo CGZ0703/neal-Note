@@ -1,11 +1,11 @@
 # Hive学习内容
 
-
-{% page-ref page="hadoop/hive/hive-an-zhuang-pei-zhi.md" %}
-
-
-{% page-ref page="hadoop/hive/hive-shi-yong-ddl.md" %}
+## [Hive安装配置](./hive-an-zhuang-pei-zhi.md)
 
 
-{% page-ref page="hadoop/hive/hive-yin-qing-tez.md" %}
+## [Hive使用DDL](./hive-shi-yong-ddl.md)
+
+
+## [Hive引擎Tez](./hive-yin-qing-tez.md)
+
 
