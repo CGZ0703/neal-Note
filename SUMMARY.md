@@ -37,10 +37,11 @@
     * [Hive安装配置](hadoop/hive/hive-an-zhuang-pei-zhi.md)
     * [Hive使用DDL](hadoop/hive/hive-shi-yong-ddl.md)
     * [Hive引擎Tez](hadoop/hive/hive-yin-qing-tez.md)
-    <!-- * [Hdfs](hadoop/hdfs/README.md) -->
-    <!-- * [MapReduce](hadoop/mapreduce/README.md) -->
-    <!-- * [Sqoop](hadoop/sqoop/README.md) -->
-    <!-- * [DataX](hadoop/datax/README.md)  -->
+  * [Hdfs](hadoop/hdfs/README.md)
+    * [HDFS块丢失过多导致进入安全模式](hadoop/hdfs/hdfs-repair-block-safe-mode.md)
+  <!-- * [MapReduce](hadoop/mapreduce/README.md) -->
+  <!-- * [Sqoop](hadoop/sqoop/README.md) -->
+  <!-- * [DataX](hadoop/datax/README.md)  -->
 
 <!-- * [DesignPattern](designPattern/README.md) -->
 
