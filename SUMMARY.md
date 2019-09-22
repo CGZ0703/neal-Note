@@ -23,6 +23,7 @@
   * [Linux](linux/README.md)
     * [Vim](linux/vim.md)
     * [Ubuntu换源](linux/ubuntu-huan-yuan.md)
+    * [Linux内存](linux/linux-nei-cun.md)
   * [Docker](linux/docker/README.md)
     * [Docker](linux/docker/docker.md)
     * [Docker容器](linux/docker/docker-rong-qi.md)
@@ -36,10 +37,10 @@
     * [Hive安装配置](hadoop/hive/hive-an-zhuang-pei-zhi.md)
     * [Hive使用DDL](hadoop/hive/hive-shi-yong-ddl.md)
     * [Hive引擎Tez](hadoop/hive/hive-yin-qing-tez.md)
-    <!-- * [Hdfs](hadoop/hdfs/README.md)
-    * [MapReduce](hadoop/mapreduce/README.md)
-    * [Sqoop](hadoop/sqoop/README.md)
-    * [DataX](hadoop/datax/README.md) -->
+    <!-- * [Hdfs](hadoop/hdfs/README.md) -->
+    <!-- * [MapReduce](hadoop/mapreduce/README.md) -->
+    <!-- * [Sqoop](hadoop/sqoop/README.md) -->
+    <!-- * [DataX](hadoop/datax/README.md)  -->
 
 <!-- * [DesignPattern](designPattern/README.md) -->
 
