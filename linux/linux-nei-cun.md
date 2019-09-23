@@ -1,13 +1,7 @@
 # Linux内存
 
-
 本文仅供自我学习，如有侵权请联系我。
 
-原文请关注公众号：  
-来源:高效运维  
-ID:greatops  
-
-https://cloud.tencent.com/developer/article/1149327
 
 ## 内存
 
@@ -49,8 +43,7 @@ OOM 关键文件 oom_kill.c，里面介绍了当内存不够时，系统如何�
 
 官方说明如下：
 
-<details>
-<summary>/proc/[pid]/oom_adj</summary>
+##### /proc/[pid]/oom_adj
 
 ```
 This file can be used to adjust the score used to select which process should be killed in an out-of-memory (OOM) situation. The kernel uses this value for a bit-shift operation of the process's oom_score value: valid values are in the range -16 to +15, plus the special value -17, which disables OOM-killing altogether for this process. A positive score increases the likelihood of this process being killed by the OOM-killer; a negative score decreases the likelihood.
@@ -59,11 +52,9 @@ The default value for this file is 0; a new process inherits its parent's oom_ad
 
 Since Linux 2.6.36, use of this file is deprecated in favor of /proc/[pid]/oom_score_adj.
 ```
-</details>
 
 
-<details>
-<summary>/proc/[pid]/oom_score (since Linux 2.6.11)</summary>
+##### proc/[pid]/oom_score (since Linux 2.6.11)
 
 ```
 This file displays the current score that the kernel gives to this process for the purpose of selecting a process for the OOM-killer. A higher score means that the process is more likely to be selected by the OOM-killer. The basis for this score is the amount of memory used by the process, with increases (+) or decreases (-) for factors including:
@@ -82,10 +73,9 @@ Before kernel 2.6.36 the following factors were also used in the calculation of 
 
 The oom_score also reflects the adjustment specified by the oom_score_adj or oom_adj setting for the process.
 ```
-</details>
 
-<details>
-<summary>/proc/[pid]/oom_score_adj (since Linux 2.6.36)</summary>
+
+##### /proc/[pid]/oom_score_adj (since Linux 2.6.36)
 
 ```
 This file can be used to adjust the badness heuristic used to select which process gets killed in out-of-memory conditions.
@@ -107,7 +97,6 @@ For backward compatibility with previous kernels, /proc/[pid]/oom_adj can still 
 
 Writing to /proc/[pid]/oom_score_adj or /proc/[pid]/oom_adj will change the other with its scaled value.
 ```
-</details>
 
 
 
@@ -122,8 +111,7 @@ Writing to /proc/[pid]/oom_score_adj or /proc/[pid]/oom_adj will change the othe
 当 overcommit_memory 为2时，永远都不能超出某个限定额的内存申请，这个限定额为 swap+RAM* 系数（/proc/sys/vm/overcmmit_ratio，默认50%，可以自己调整），如果这么多资源已经用光，那么后面任何尝试申请内存的行为都会返回错误，这通常意味着此时没法运行任何新程序
 
 
-<details>
-<summary>/proc/sys/vm/overcommit_memory</summary>
+##### /proc/sys/vm/overcommit_memory
 
 ```
 This file contains the kernel virtual memory accounting mode.
@@ -141,11 +129,9 @@ In mode 2 (available since Linux 2.6), the total virtual address space that can 
 
     CommitLimit = (total_RAM - total_huge_TLB) * overcommit_ratio / 100 + total_swap
 ```
-</details>
 
 
-<details>
-<summary>/proc/sys/vm/overcommit_kbytes (since Linux 3.14)</summary>
+##### /proc/sys/vm/overcommit_kbytes (since Linux 3.14)
 
 ```
 This writable file provides an alternative to /proc/sys/vm/overcommit_ratio for controlling the CommitLimit when /proc/sys/vm/overcommit_memory has the value 2. It allows the amount of memory overcommitting to be specified as an absolute
@@ -233,8 +219,7 @@ Buffer cache 则主要是设计用来在系统对块设备进行读写的时候�
 
 当 drop_caches 文件为1时，这时将释放 pagecache 中可释放的部分（有些 cache 是不能通过这个释放的），当 drop_caches 为2时，这时将释放 dentries 和 inodes 缓存，当 drop_caches 为3时，这同时释放上述两项。
 
-<details>
-<summary>/proc/sys/vm/drop_caches</summary>
+##### /proc/sys/vm/drop_caches
 
 ```
 Writing to this file causes the kernel to drop clean caches, dentries, and inodes from memory, causing that memory to become free. This can be useful for memory management testing and per‐
@@ -251,7 +236,7 @@ forming reproducible filesystem benchmarks. Because writing to this file causes 
 
 Because writing to this file is a nondestructive operation and dirty objects are not freeable, the user should run sync(1) first.
 ```
-</details>
+
 
 关键还有最后一句，意思是说如果 pagecache 中有脏数据时，操作 drop_caches 是不能释放的，必须通过 sync 命令将脏数据刷新到磁盘，才能通过操作 drop_caches 释放 pagecache。
 
@@ -362,13 +347,12 @@ LRU_UNEVICTABLE 即为不可驱逐页 lru，我的理解就是当调用 mlock �
 swap 换进换出其实是很占用系统IO的，如果系统内存需求突然间迅速增长，那么cpu 将被io占用，系统会卡死，导致不能对外提供服务，因此系统提供一个参数，用于设置当进行内存回收时，执行回收 cache 和 swap 匿名页的，这个参数为:
 
 
-<details>
-<summary>/proc/sys/vm/swappiness</summary>
+##### /proc/sys/vm/swappiness
 
 ```
 The value in this file controls how aggressively the kernel will swap memory pages. Higher values increase aggressiveness, lower values decrease aggressiveness. The default value is 60.
 ```
-</details>
+
 
 意思就是说这个值越高，越可能使用 swap 的方式回收内存，最大值为100，如果设为0，则尽可能使用回收 cache 的方式释放内存。
 
@@ -382,3 +366,12 @@ The value in this file controls how aggressively the kernel will swap memory pag
 
 最后当申请的内存大于系统剩余的内存时，这时就只会产生 OOM，杀死进程，释放内存，从这个过程，可以看出系统为了腾出足够的内存，是多么的努力啊。
 
+
+
+---------------------
+
+原文请关注公众号：  
+来源:高效运维  
+ID:greatops  
+
+https://cloud.tencent.com/developer/article/1149327
