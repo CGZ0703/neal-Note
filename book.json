@@ -1,17 +1,19 @@
 {
     "title": "Neal's Space",
-    "author": "Neal Zhao <neal.zhao@qq.com>",
     "description": "一只程序猿的总结及学习内容。",
-    "language" : "zh-hans",
-    "gitbook": "3.2.3",
+    "author": "Neal Zhao <neal.zhao@qq.com>",
     "output.name": "site",
+    "language": "zh-hans",
+    "gitbook": "3.2.3",
     "root": ".",
+    "structure": {
+        "readme": "README.md"
+    },
     "links": {
         "sidebar": {
             "Neal's Blog": "http://neal73.gitbook.io/space"
         }
     },
-    "output": null,
     "plugins": [
         "-lunr",
         "-search",
@@ -28,6 +30,7 @@
         "tbfed-pagefooter@^0.0.1",
         "versions-select@^0.1.1"
     ],
+    
     "pluginsConfig": {
         "disqus": {
             "shortName": "gitbookuse"
