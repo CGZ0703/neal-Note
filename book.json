@@ -1,54 +1,61 @@
 {
-    "title": "JustNote",
-    "description": "一本简单的运维笔记，用来记录和分享自己的学习与成长之路。",
-    "language": "zh-hans",
+    "title": "Neal's Space",
+    "author": "Neal Zhao <neal.zhao@qq.com>",
+    "description": "一只程序猿的总结及学习内容。",
+    "language" : "zh-hans",
+    "extension": null,
+    "generator": "site",
+    "isbn": null,
+    "links": {
+        "sharing": {
+            "all": null,
+            "facebook": null,
+            "google": null,
+            "twitter": null,
+            "weibo": null
+        },
+        "sidebar": {
+            "Neal's Blog": "http://neal73.gitbook.io"
+        }
+    },
+    "output": null,
     "plugins": [
-        "-disqus",
+        "disqus",
         "github",
-        "editlink",
-        "prism",
-        "-highlight",
-        "-baidu",
+        "github-buttons",
         "splitter",
-        "-sitemap",
-        "tbfed-pagefooter",
-        "fontsettings",
-        "simple-page-toc",
-        "links",
         "expandable-chapters-small",
-        "sitemap-general",
+        "katex",
+        "graph",
+        "mermaid-gb3",
         "lunr",
         "search",
-        "search-plus"
+        "search-plus",
+        "tbfed-pagefooter",
+        "simple-page-toc"
     ],
     "pluginsConfig": {
+        "github": {
+            "url": "http://neal73.gitbook.io"
+        },
+        "github-buttons": {
+            "repo": "CGZ0703/neal-Note",
+            "types": [
+                "star",
+                "watch",
+                "fork"
+            ],
+            "size": "small"
+        },
         "tbfed-pagefooter": {
-            "copyright": "",
+            "copyright":"Copyright &copy zhangjikai.com 2017",
             "modify_label": "该文件修订时间：",
             "modify_format": "YYYY-MM-DD HH:mm:ss"
         },
         "simple-page-toc": {
             "maxDepth": 3,
             "skipFirstH1": true
-        },
-        "links": {
-            "gitbook": false,
-            "sharing": {
-                "google": false,
-                "facebook": false,
-                "twitter": false,
-                "all": false
-            }
-        },
-        "github": {
-            "url": "https://github.com/CGZ0703/neal-Note/"
-        },
-        "editlink": {
-            "base": "https://github.com/CGZ0703",
-            "label": "编辑本页面"
-        },
-        "sitemap-general": {
-            "prefix": "https://neal73.gitbook.io/space"
         }
-    }
+    },
+    "variables": {}
 }
