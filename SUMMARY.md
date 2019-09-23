@@ -3,7 +3,7 @@
 * [简介](README.md)
 
 * [Algorithm](algorithm/README.md)
-  <!-- * [数学基础](algorithm/math.md) -->
+  * [数学基础](algorithm/math.md)
   * [一致性哈希算法](algorithm/yi-zhi-xing-ha-xi-suan-fa.md)
 
 * [Java](java/README.md)
