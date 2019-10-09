@@ -120,6 +120,13 @@ vim $HIVE_HOME/conf/hive-site.xml
 
 ### 2.机器内存不足  
 
+出现类似下面的报错信息
+
+```c
+Failing this attempt.Diagnostics: [2019-09-26 17:33:34.455]Container [pid=19299,containerID=container_1569490318346_0002_02_000001] is running beyond virtual memory limits. Current usage: 315.5 MB of 1 GB physical memory used; 2.7 GB of 2.1 GB virtual memory used. Killing container.
+
+```
+
 vim $TEZ_CONF_DIR/tez-site.xml
 
 ```xml
