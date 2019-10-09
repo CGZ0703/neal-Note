@@ -15,9 +15,11 @@
   * [JVM内存](java/jvm-nei-cun.md)
   * [Garbage Collection（JVM的垃圾回收机制）](java/garbage-collectionjvm-de-la-ji-hui-shou-ji-zhi.md)
   * [Synchronized](java/synchronized.md)
+  * [Java跨域访问](java/SpringBoot-Ajax-kua-yu.md)
 
 * [MySQL](mysql/README.md)
   * [MySQL事务](mysql/mysql-shi-wu.md)
+  * [MySQL插入多条数据性能优化](mysql/mysql-you-hua-innodb_flush_log_at_trx_commit.md)
   * [MySQL经典50题](mysql/mysql-jing-dian-50-ti.md)
 
 * [Linux](linux/README.md)
