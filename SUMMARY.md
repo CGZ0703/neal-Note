@@ -36,12 +36,16 @@
 * [Hadoop](hadoop/README.md)
   * [Hadoop](hadoop/README.md)
     * [Docker运行Hadoop](hadoop/docker-yun-xing-hadoop.md)
+  * [Hdfs](hadoop/hdfs/README.md)
+    * [HDFS块丢失过多导致进入安全模式](hadoop/hdfs/hdfs-repair-block-safe-mode.md)
   * [Hive](hadoop/hive/README.md)
     * [Hive安装配置](hadoop/hive/hive-an-zhuang-pei-zhi.md)
     * [Hive使用DDL](hadoop/hive/hive-shi-yong-ddl.md)
     * [Hive引擎Tez](hadoop/hive/hive-yin-qing-tez.md)
-  * [Hdfs](hadoop/hdfs/README.md)
-    * [HDFS块丢失过多导致进入安全模式](hadoop/hdfs/hdfs-repair-block-safe-mode.md)
+    * [Sqoop与Hive出现的问题](hadoop/hive/sqoop-hive-problem.md)
+    * [Hive与Hook](hadoop/hive/hive-yu-hook.md)
+  * [Flume](hadoop/flume/README.md)
+  <!-- * [Flume](hadoop/flume/.md) -->
   <!-- * [MapReduce](hadoop/mapreduce/README.md) -->
   <!-- * [Sqoop](hadoop/sqoop/README.md) -->
   <!-- * [DataX](hadoop/datax/README.md)  -->
