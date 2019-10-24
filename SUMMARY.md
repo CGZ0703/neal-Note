@@ -46,6 +46,12 @@
     * [Hive与Hook](hadoop/hive/hive-yu-hook.md)
   * [Flume](hadoop/flume/README.md)
   <!-- * [Flume](hadoop/flume/.md) -->
+  * [Hbase](hadoop/hbase/README.md)
+    * [Hbase安装配置](hadoop/hbase/hbase-an-zhuang.md
+    <!-- * [Hbase写流程](hadoop/hbase/hbase-write.md) -->
+    <!-- * [Hbase读流程](hadoop/hbase/hbase-read.md) -->
+    * [Hbase的Bloom Filters](hadoop/hbase/bloom-filters.md)
+)
   <!-- * [MapReduce](hadoop/mapreduce/README.md) -->
   <!-- * [Sqoop](hadoop/sqoop/README.md) -->
   <!-- * [DataX](hadoop/datax/README.md)  -->
