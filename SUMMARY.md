@@ -5,7 +5,6 @@
 * [Algorithm](algorithm/README.md)
   * [数学基础](algorithm/math.md)
   * [一致性哈希算法](algorithm/yi-zhi-xing-ha-xi-suan-fa.md)
-
 * [Java](java/README.md)
   * [Lombok](java/lombok.md)
   * [多数据源分页查询拼接订单](java/duo-shu-ju-yuan-fen-ye-cha-xun-pin-jie-ding-dan.md)
@@ -16,12 +15,10 @@
   * [Garbage Collection（JVM的垃圾回收机制）](java/garbage-collectionjvm-de-la-ji-hui-shou-ji-zhi.md)
   * [Synchronized](java/synchronized.md)
   * [Java跨域访问](java/SpringBoot-Ajax-kua-yu.md)
-
 * [MySQL](mysql/README.md)
   * [MySQL事务](mysql/mysql-shi-wu.md)
   * [MySQL插入多条数据性能优化](mysql/mysql-you-hua-innodb_flush_log_at_trx_commit.md)
   * [MySQL经典50题](mysql/mysql-jing-dian-50-ti.md)
-
 * [Linux](linux/README.md)
   * [Linux](linux/README.md)
     * [Vim](linux/vim.md)
@@ -32,7 +29,6 @@
     * [Docker容器](linux/docker/docker-rong-qi.md)
     * [Docker镜像](linux/docker/docker-jing-xiang.md)
     * [Docker创建本地镜像](linux/docker/docker-chuang-jian-ben-di-jing-xiang.md)
-
 * [Hadoop](hadoop/README.md)
   * [Hadoop](hadoop/README.md)
     * [Docker运行Hadoop](hadoop/docker-yun-xing-hadoop.md)
@@ -47,15 +43,15 @@
   * [Flume](hadoop/flume/README.md)
   <!-- * [Flume](hadoop/flume/.md) -->
   * [Hbase](hadoop/hbase/README.md)
-    * [Hbase安装配置](hadoop/hbase/hbase-an-zhuang.md
+    * [Hbase安装配置](hadoop/hbase/hbase-an-zhuang.md)
     <!-- * [Hbase写流程](hadoop/hbase/hbase-write.md) -->
     <!-- * [Hbase读流程](hadoop/hbase/hbase-read.md) -->
     * [Hbase的Bloom Filters](hadoop/hbase/bloom-filters.md)
-)
   <!-- * [MapReduce](hadoop/mapreduce/README.md) -->
   <!-- * [Sqoop](hadoop/sqoop/README.md) -->
   <!-- * [DataX](hadoop/datax/README.md)  -->
-
+* [Scala](scala/README.md)
+  * [Scala使用](scala/scala-shi-yong.md)
+* [Spark](spark/README.md)
 <!-- * [DesignPattern](designPattern/README.md) -->
-
 

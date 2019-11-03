@@ -2,10 +2,9 @@
 
 ## HBase与Hadoop的版本选择
 
-X : not supported 已知功能不完整或者存在CVE，因此放弃了支持
-Y : supported 经过测试全功能支持
-NT : Not tested 未经过测试
-
+X : not supported 已知功能不完整或者存在CVE，因此放弃了支持  
+Y : supported 经过测试全功能支持  
+NT : Not tested 未经过测试  
 
 ### Java support by release line
 
@@ -178,7 +177,7 @@ hadoop2
 for i in 2 3 4; do scp -r hbase hadoop${i}:/opt/framework/
 ```
 
-启动Hbase 
-先启动zookeerper 
-再启动hbase：使用`start-hbase.sh`
+1. 启动Hbase
+2. 先启动zookeerper
+3. 再启动hbase：使用`start-hbase.sh`
 
