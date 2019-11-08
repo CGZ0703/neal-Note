@@ -38,7 +38,7 @@
 
 普通Hash算法是对其Hash值取模，得以较均匀的散列分布在节点上
 
-![](../.gitbook/assets/algorithm/11.png)
+![](../../.gitbook/assets/algorithm/normal/11.png)
 
 ```c
 for item in ITEMS:
@@ -57,7 +57,7 @@ item都有一个HashKey，此算法不难看出，强依赖于node的数目；�
 
 如何解决这个问题呢，一致性哈希算法的解决方案是把节点也加进哈希中。
 
-![](../.gitbook/assets/algorithm/12.png)
+![](../../.gitbook/assets/algorithm/normal/12.png)
 
 ```c
 for node in NODES:
@@ -87,7 +87,7 @@ for item in ITEMS:
 
 通过添加虚节点，使其节点的分布较为均匀。
 
-![](../.gitbook/assets/algorithm/13.png)
+![](../../.gitbook/assets/algorithm/normal/13.png)
 
 ```c
 for node in NODES:

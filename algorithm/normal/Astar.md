@@ -1,4 +1,4 @@
-## 序
+## 简介
 
 1968年，的一篇论文，“P. E. Hart, N. J. Nilsson, and B. Raphael. A formal basis for the heuristic determination of minimum cost paths in graphs. IEEE Trans. Syst. Sci. and Cybernetics, SSC-4(2):100-107, 1968”。从此，一种精巧、高效的算法------A*算法横空出世了，并在相关领域得到了广泛的应用。
 
@@ -8,7 +8,9 @@
 
 ## A*估值函数
 
-$$f(n) = g(n) + h(n)$$
+$$
+f(n) = g(n) + h(n)
+$$
 
 * f(n):从初始状态经由状态n到目标状态的代价估计
 * g(n):是在状态空间中从初始状态到状态n的实际代价
@@ -38,24 +40,35 @@ $$f(n) = g(n) + h(n)$$
 
 * 不考虑斜向移动的情况，直线运动的代价为 **P/单位**
 
-$$h(n)=P × (ABS(n.x-goal.x) + ABS(n.y-goal.y))$$
+$$
+h(n)=P × (ABS(n.x-goal.x) + ABS(n.y-goal.y))
+$$
 
 
 ### 切比雪夫距离(Chebyshev distance)
 
 * 对于对角线和直线运动的代价都为 **P/单位** 的时候（类似西洋棋中的王）
 
-$$h(n)=P × MAX(ABS(n.x-goal.x),ABS(n.y-goal.y))$$
+$$
+h(n)=P × MAX(ABS(n.x-goal.x),ABS(n.y-goal.y))
+$$
 
-* 对角线(diagonal)运动在实际生活中运动的代价跟直线(straight)运动的代价(P/单位)并不同，对角线运动的代价一般类似于 $P_0=\sqrt{2}P$
+* 对角线(diagonal)运动在实际生活中运动的代价跟直线(straight)运动的代价(P/单位)并不同，对角线运动的代价一般类似于 
+$$
+P_0=\sqrt{2}P
+$$
 
-$$h(n)=P_0 × h_{diagonal}(n)+P × (h_{straight}(n) - 2 × h_{diagonal}(n))$$
+$$
+h(n)=P_0 × h_{diagonal}(n)+P × (h_{straight}(n) - 2 × h_{diagonal}(n))
+$$
 
 ## 欧几里得距离(Euclidean distance)
 
 * 欧氏距离就是两点之间直线距离
 
-$$h(n)=P × \sqrt{(n.x-goal.x)^2 + (n.y-goal.y)^2}$$
+$$
+h(n)=P × \sqrt{(n.x-goal.x)^2 + (n.y-goal.y)^2}
+$$
 - 注意：计算平方根将会消耗资源比较多，所以此方法基本不被使用
 
 

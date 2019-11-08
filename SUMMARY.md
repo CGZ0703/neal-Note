@@ -4,7 +4,11 @@
 
 * [Algorithm](algorithm/README.md)
   * [数学基础](algorithm/math.md)
-  * [一致性哈希算法](algorithm/yi-zhi-xing-ha-xi-suan-fa.md)
+  * [Normal](algorithm/normal/README.md)
+    * [一致性哈希分布](algorithm/normal/yi-zhi-xing-ha-xi-suan-fa.md)
+    * [A star 寻路](algorithm/normal/Astar.md)
+  * [Machine Learning](algorithm/ml/README.md)
+    * [TF-IDF 特征加权](algorithm/ml/tf-idf.md)
 * [Java](java/README.md)
   * [Lombok](java/lombok.md)
   * [多数据源分页查询拼接订单](java/duo-shu-ju-yuan-fen-ye-cha-xun-pin-jie-ding-dan.md)
