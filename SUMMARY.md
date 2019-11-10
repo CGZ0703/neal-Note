@@ -8,6 +8,7 @@
     * [一致性哈希分布](algorithm/normal/yi-zhi-xing-ha-xi-suan-fa.md)
     * [A star 寻路](algorithm/normal/Astar.md)
   * [Machine Learning](algorithm/ml/README.md)
+    * [k-近邻算法](algorithm/ml/knn.md)
     * [TF-IDF 特征加权](algorithm/ml/tf-idf.md)
 * [Java](java/README.md)
   * [Lombok](java/lombok.md)
