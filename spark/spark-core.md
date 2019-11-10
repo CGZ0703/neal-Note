@@ -56,7 +56,7 @@
     3. intersection(otherDataset)
     4. cartesian(otherDataset)
     5. zip(otherDataset)
-  - K-V 类型
+  - K-V 类型（通过隐式转换获得的方法
     1. partitionBy
     2. groupByKey
     3. reduceByKey
@@ -80,6 +80,73 @@
   11. saveAsObjectFile(path)
   12. countByKey()
   13. foreach(func)
+
+
+### 依赖关系
+
+- NarrowDependency  
+  一对一，不会产生新的Stage
+- ShuffleDependency  
+  一对多，会产生新的Stage
+
+
+### 缓存
+
+- cache
+- persist
+- checkpoint
+
+cache 就是 调用了 默认参数的 persist
+```scala
+/**
+ * Set this RDD's storage level to persist its values across operations after the first time
+ * it is computed. This can only be used to assign a new storage level if the RDD does not
+ * have a storage level set yet. Local checkpointing is an exception.
+ */
+def persist(newLevel: StorageLevel): this.type = {
+  if (isLocallyCheckpointed) {
+    // This means the user previously called localCheckpoint(), which should have already
+    // marked this RDD for persisting. Here we should override the old storage level with
+    // one that is explicitly requested by the user (after adapting it to use disk).
+    persist(LocalRDDCheckpointData.transformStorageLevel(newLevel), allowOverride = true)
+  } else {
+    persist(newLevel, allowOverride = false)
+  }
+}
+
+/**
+ * Persist this RDD with the default storage level (`MEMORY_ONLY`).
+ */
+def persist(): this.type = persist(StorageLevel.MEMORY_ONLY)
+
+/**
+ * Persist this RDD with the default storage level (`MEMORY_ONLY`).
+ */
+def cache(): this.type = persist()
+```
+
+缓存级别
+```scala
+class StorageLevel private(
+    private var _useDisk: Boolean,
+    private var _useMemory: Boolean,
+    private var _useOffHeap: Boolean,
+    private var _deserialized: Boolean,
+    private var _replication: Int = 1)
+
+val NONE = new StorageLevel(false, false, false, false)
+val DISK_ONLY = new StorageLevel(true, false, false, false)
+val DISK_ONLY_2 = new StorageLevel(true, false, false, false, 2)
+val MEMORY_ONLY = new StorageLevel(false, true, false, true)
+val MEMORY_ONLY_2 = new StorageLevel(false, true, false, true, 2)
+val MEMORY_ONLY_SER = new StorageLevel(false, true, false, false)
+val MEMORY_ONLY_SER_2 = new StorageLevel(false, true, false, false, 2)
+val MEMORY_AND_DISK = new StorageLevel(true, true, false, true)
+val MEMORY_AND_DISK_2 = new StorageLevel(true, true, false, true, 2)
+val MEMORY_AND_DISK_SER = new StorageLevel(true, true, false, false)
+val MEMORY_AND_DISK_SER_2 = new StorageLevel(true, true, false, false, 2)
+val OFF_HEAP = new StorageLevel(true, true, true, false, 1)
+```
 
 
 ## 广播变量
