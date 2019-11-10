@@ -57,5 +57,7 @@
 * [Scala](scala/README.md)
   * [Scala使用](scala/scala-shi-yong.md)
 * [Spark](spark/README.md)
+  * [Spark基础](spark/spark-core.md)
+  * [Spark SQL](spark/spark-sql.md)
 <!-- * [DesignPattern](designPattern/README.md) -->
 
