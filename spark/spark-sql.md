@@ -220,6 +220,48 @@ abstract class UserDefinedAggregateFunction extends Serializable
   def evaluate(buffer: Row): Any
 ```
 
+强类型聚合函数
+
+```scala
+abstract class Aggregator[-IN, BUF, OUT] extends Serializable
+
+  /**
+   * A zero value for this aggregation. Should satisfy the property that any b + zero = b.
+   * @since 1.6.0
+   */
+  def zero: BUF
+
+  /**
+   * Combine two values to produce a new value.  For performance, the function may modify `b` and
+   * return it instead of constructing new object for b.
+   * @since 1.6.0
+   */
+  def reduce(b: BUF, a: IN): BUF
+
+  /**
+   * Merge two intermediate values.
+   * @since 1.6.0
+   */
+  def merge(b1: BUF, b2: BUF): BUF
+
+  /**
+   * Transform the output of the reduction.
+   * @since 1.6.0
+   */
+  def finish(reduction: BUF): OUT
+
+  /**
+   * Specifies the `Encoder` for the intermediate value type.
+   * @since 2.0.0
+   */
+  def bufferEncoder: Encoder[BUF]
+
+  /**
+   * Specifies the `Encoder` for the final ouput value type.
+   * @since 2.0.0
+   */
+  def outputEncoder: Encoder[OUT]
+```
 
 ## 开窗函数
 
