@@ -8,7 +8,7 @@ Hive是一个数据仓库工具，基于Hadoop，可以通过类sql的方式来�
 
 ## Hive组成
 
-![](../../.gitbook/assets/hadoop/hive/hive架构图.jpg)
+![](../../.gitbook/assets/data/hive/hive架构图.jpg)
 
 - 客户端：CLI、JDBC、WebUI
 - Thrift Server：Thrift协议RPC通信服务
@@ -197,7 +197,7 @@ DataGrip打开Data Sources and Drivers
 
 配置合适版本的驱动包
 
-![](../../.gitbook/assets/hadoop/hive/2019-09-18_01-31.png)
+![](../../.gitbook/assets/data/hive/2019-09-18_01-31.png)
 
 由于 hive-jdbc 不是包含所有依赖的包(这里是 HA 的 HiveServer, 需要有 ZK 的依赖, 也可以直接连接 HiveServer), 所以需要导入 Driver 的全部 jar, 如下：
 

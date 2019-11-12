@@ -1,7 +1,6 @@
 # Table of contents
 
-* [简介](README.md)
-
+* [Introduction](README.md)
 * [Algorithm](algorithm/README.md)
   * [数学基础](algorithm/math.md)
   * [Normal](algorithm/normal/README.md)
@@ -10,16 +9,20 @@
   * [Machine Learning](algorithm/ml/README.md)
     * [k-近邻算法](algorithm/ml/knn.md)
     * [TF-IDF 特征加权](algorithm/ml/tf-idf.md)
-* [Java](java/README.md)
-  * [Lombok](java/lombok.md)
-  * [多数据源分页查询拼接订单](java/duo-shu-ju-yuan-fen-ye-cha-xun-pin-jie-ding-dan.md)
-  * [集群 分布式 微服务](java/ji-qun-fen-bu-shi-wei-fu-wu.md)
-  * [反射](java/fan-she.md)
-  * [JAVA类加载器](java/java-lei-jia-zai-qi.md)
-  * [JVM内存](java/jvm-nei-cun.md)
-  * [Garbage Collection（JVM的垃圾回收机制）](java/garbage-collectionjvm-de-la-ji-hui-shou-ji-zhi.md)
-  * [Synchronized](java/synchronized.md)
-  * [Java跨域访问](java/SpringBoot-Ajax-kua-yu.md)
+* [Programming Language]()
+  <!-- * [DesignPattern](designPattern/README.md) -->
+  * [Java](java/README.md)
+    * [Lombok](java/lombok.md)
+    * [多数据源分页查询拼接订单](java/duo-shu-ju-yuan-fen-ye-cha-xun-pin-jie-ding-dan.md)
+    * [集群 分布式 微服务](java/ji-qun-fen-bu-shi-wei-fu-wu.md)
+    * [反射](java/fan-she.md)
+    * [JAVA类加载器](java/java-lei-jia-zai-qi.md)
+    * [JVM内存](java/jvm-nei-cun.md)
+    * [Garbage Collection（JVM的垃圾回收机制）](java/garbage-collectionjvm-de-la-ji-hui-shou-ji-zhi.md)
+    * [Synchronized](java/synchronized.md)
+    * [Java跨域访问](java/SpringBoot-Ajax-kua-yu.md)
+  * [Scala](scala/README.md)
+    * [Scala使用](scala/scala-shi-yong.md)
 * [MySQL](mysql/README.md)
   * [MySQL事务](mysql/mysql-shi-wu.md)
   * [MySQL插入多条数据性能优化](mysql/mysql-you-hua-innodb_flush_log_at_trx_commit.md)
@@ -34,31 +37,34 @@
     * [Docker容器](linux/docker/docker-rong-qi.md)
     * [Docker镜像](linux/docker/docker-jing-xiang.md)
     * [Docker创建本地镜像](linux/docker/docker-chuang-jian-ben-di-jing-xiang.md)
-* [Hadoop](hadoop/README.md)
-  * [Hadoop](hadoop/README.md)
-    * [Docker运行Hadoop](hadoop/docker-yun-xing-hadoop.md)
-  * [Hdfs](hadoop/hdfs/README.md)
-    * [HDFS块丢失过多导致进入安全模式](hadoop/hdfs/hdfs-repair-block-safe-mode.md)
-  * [Hive](hadoop/hive/README.md)
-    * [Hive安装配置](hadoop/hive/hive-an-zhuang-pei-zhi.md)
-    * [Hive使用DDL](hadoop/hive/hive-shi-yong-ddl.md)
-    * [Hive引擎Tez](hadoop/hive/hive-yin-qing-tez.md)
-    * [Sqoop与Hive出现的问题](hadoop/hive/sqoop-hive-problem.md)
-    * [Hive与Hook](hadoop/hive/hive-yu-hook.md)
-  * [Flume](hadoop/flume/README.md)
-  <!-- * [Flume](hadoop/flume/.md) -->
-  * [Hbase](hadoop/hbase/README.md)
-    * [Hbase安装配置](hadoop/hbase/hbase-an-zhuang.md)
-    <!-- * [Hbase写流程](hadoop/hbase/hbase-write.md) -->
-    <!-- * [Hbase读流程](hadoop/hbase/hbase-read.md) -->
-    * [Hbase的Bloom Filters](hadoop/hbase/bloom-filters.md)
-  <!-- * [MapReduce](hadoop/mapreduce/README.md) -->
-  <!-- * [Sqoop](hadoop/sqoop/README.md) -->
-  <!-- * [DataX](hadoop/datax/README.md)  -->
-* [Scala](scala/README.md)
-  * [Scala使用](scala/scala-shi-yong.md)
-* [Spark](spark/README.md)
-  * [Spark基础](spark/spark-core.md)
-  * [Spark SQL](spark/spark-sql.md)
-<!-- * [DesignPattern](designPattern/README.md) -->
+* [Data]()
+  * [Hadoop](data/hadoop/README.md)
+    * [Hadoop](data/hadoop/README.md)
+      * [Docker运行Hadoop](data/hadoop/docker-yun-xing-hadoop.md)
+    * [Hdfs](data/hadoop/hdfs/README.md)
+      * [HDFS块丢失过多导致进入安全模式](data/hadoop/hdfs/hdfs-repair-block-safe-mode.md)
+      <!-- * [HDFS写流程](hadoop/hdfs/hdfs-write.md) -->
+      <!-- * [Hbase读流程](hadoop/hdfs/hdfs-read.md) -->
+    <!-- * [MapReduce](data/mapreduce/README.md) -->
+  * [Hive](data/hive/README.md)
+    * [Hive安装配置](data/hive/hive-an-zhuang-pei-zhi.md)
+    * [Hive使用DDL](data/hive/hive-shi-yong-ddl.md)
+    * [Hive引擎Tez](data/hive/hive-yin-qing-tez.md)
+    * [Sqoop与Hive出现的问题](data/hive/sqoop-hive-problem.md)
+    * [Hive与Hook](data/hive/hive-yu-hook.md)
+  * [Flume](data/flume/README.md)
+  <!-- * [Flume](data/flume/.md) -->
+  * [Hbase](data/hbase/README.md)
+    * [Hbase安装配置](data/hbase/hbase-an-zhuang.md)
+    <!-- * [Hbase写流程](data/hbase/hbase-write.md) -->
+    <!-- * [Hbase读流程](data/hbase/hbase-read.md) -->
+    * [Hbase的Bloom Filters](data/hbase/bloom-filters.md)
+  <!-- * [Sqoop](data/sqoop/README.md) -->
+  <!-- * [DataX](data/datax/README.md) -->
+  * [Spark](data/spark/README.md)
+    * [Spark基础](data/spark/spark-core.md)
+    * [Spark SQL](data/spark/spark-sql.md)
+  * [Kafka](data/kafka/README.md)
+    * [Kafka文件存储](data/kafka/kafka-file.md)
+
 

@@ -9,7 +9,7 @@ Bloom Filter是提出者Burton Howard Bloom命名的，是一种数据结构。�
 
 布隆过滤器（Bloom Filter）的核心实现是一个超大的位数组（或者叫位向量）和几个哈希函数。假设位数组的长度为m，哈希函数的个数为k
 
-![](../../.gitbook/assets/hadoop/hbase/Bloom_filter.jpg)
+![](../../.gitbook/assets/data/hbase/Bloom_filter.jpg)
 
 流程：
 

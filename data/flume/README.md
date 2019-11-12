@@ -30,7 +30,7 @@ Event是Flume定义的一个数据流传输的最小单元。Agent就是一个Fl
 - Channel是一个数据的缓冲池
 - Sink定义了数据输出的方式和目的地
 
-![](../../.gitbook/assets/hadoop/flume/UserGuide_image00.png)
+![](../../.gitbook/assets/data/flume/UserGuide_image00.png)
 
 Source消耗由外部（如Web服务器）传递给它的Event。外部以Flume Source识别的格式向Flume发送Event。例如，Avro Flume Source可接收从Avro客户端（或其他FlumeSink）接收Avro Event。用Thrift Flume Source也可以实现类似的流程，接收的Event数据可以是任何语言编写的只要符合Thrift协议即可。
 
@@ -50,7 +50,7 @@ Flume可以设置多级Agent连接的方式传输Event数据。也支持扇入�
 
 > 可以根据自己的业务需求来任意组合传输日志的Agent实例，引用一张后面章节的图，这就是一个扇入方式的Flume部署方式，前三个Agent的数据都汇总到一个Agent4上，最后由Agent4统一存储到HDFS。
 
-![](../../.gitbook/assets/hadoop/flume/UserGuide_image02.png)
+![](../../.gitbook/assets/data/flume/UserGuide_image02.png)
 
 
 ### 可靠性 Reliability

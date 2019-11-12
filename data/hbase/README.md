@@ -58,7 +58,7 @@ mysql上千万支撑不住，所以不存入mysql中
 
 ### 架构图
 
-![](../../.gitbook/assets/hadoop/hbase/hbase_arth.png)
+![](../../.gitbook/assets/data/hbase/hbase_arth.png)
 
 
 - Client : hbase客户端，

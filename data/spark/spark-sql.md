@@ -23,7 +23,7 @@ RDD的劣势是性能限制，它是一个JVM驻内存对象，这也就决定�
 
 与RDD类似，DataFrame也是一个分布式数据容器。然而DataFrame更像传统数据库的二维表格，除了数据以外，还记录数据的结构信息，即schema。同时，与Hive类似，DataFrame也支持嵌套数据类型（struct、array和map）。
 
-![](../.gitbook/assets/spark/dataframe.png)
+![](../../.gitbook/assets/data/spark/dataframe.png)
 
 DataFrame是为数据提供了Schema的视图。可以把它当做数据库中的一张表来对待
 
@@ -33,11 +33,11 @@ DataFrame也是懒执行的。
 
 ###### 定制化内存管理
 
-![](../.gitbook/assets/spark/dfmem.png)
+![](../../.gitbook/assets/data/spark/dfmem.png)
 
 ###### 优化的执行计划
 
-![](../.gitbook/assets/spark/dfexec.png)
+![](../../.gitbook/assets/data/spark/dfexec.png)
 
 Dataframe的劣势在于在编译期缺少类型安全检查，导致运行时出错.
 

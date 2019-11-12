@@ -10,7 +10,7 @@
 - 组成
   1. *.index，偏移量索引文件，上一个segment的最后一个消息的偏移量
   2. *.log，日志文件，保存了所有的消息
-  3. *.timestamp，保存的是时间索引
+  3. *.timeindex，保存的是时间索引
   4. *.snaphot，快照文件
   5. *.deleted，被删除
   6. *.cleaned，日志清理临时文件
@@ -22,7 +22,7 @@
   3. offset的数值最大为64位(long类型)，20位数字字符长度，前面用0填充
   4. 文件名相同的集合称为一组LogSegment
 
-![](../../.gitbook/assets/data/kafka/segmentindex_log.png)
+![](../../.gitbook/assets/data/kafka/kafka_log.png)
 
 
 **切分Segment条件**：
@@ -49,7 +49,58 @@
 
 log中写入的数据称为Record。以RecordBatch为单位写入，每个Batch中至少有一个Record。RecordBatch的数据结构：
 
-![](../../.gitbook/assets/data/kafka/record_struct.png)
+#### RecordBatch:
+```
+baseOffset: int64
+batchLength: int32
+partitionLeaderEpoch: int32
+magic: int8 (current magic value is 2)
+crc: int32
+attributes: int16
+    bit 0~2:
+        0: no compression
+        1: gzip
+        2: snappy
+        3: lz4
+        4: zstd
+    bit 3: timestampType
+    bit 4: isTransactional (0 means not transactional)
+    bit 5: isControlBatch (0 means not a control batch)
+    bit 6~15: unused
+lastOffsetDelta: int32
+firstTimestamp: int64
+maxTimestamp: int64
+producerId: int64
+producerEpoch: int16
+baseSequence: int32
+records: [Record]
+```
+
+#### Record:
+```
+length: varint
+attributes: int8
+    bit 0~7: unused
+timestampDelta: varint
+offsetDelta: varint
+keyLength: varint
+key: byte[]
+valueLen: varint
+value: byte[]
+Headers => [Header]
+```
+
+#### Record Header:
+```
+headerKeyLength: varint
+headerKey: String
+headerValueLength: varint
+Value: byte[]
+```
+
+#### 如图所示：
+
+![](../../.gitbook/assets/data/kafka/message_format.png)
 
 
 
