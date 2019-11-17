@@ -4,6 +4,13 @@
 
 > Kafka® is used for building real-time data pipelines and streaming apps. It is horizontally scalable, fault-tolerant, wicked fast.
 
+优点：
+1. 解耦
+2. 可恢复性
+3. 缓冲
+4. 灵活性 & 峰值处理能力
+5. 异步通信
+
 ## Kafka是一个分布式的数据流平台
 
 #### 流平台具有三个关键功能：
@@ -23,21 +30,27 @@
 2. Kafka集群把消息(record)存储在被叫做主题(topic)的分类中
 3. 每条消息都由一个key，一个value，一个timestamp组成
 
-## 组件介绍
+## 基础架构组成
+
+Message：消息，是通信的基本单位，每个producer可以向一个topic（主题）发送一些消息
+
+Producer：消息和数据生产者，向Kafka的一个topic发送消息的是producer（producer可以选择向topic哪一个partition发送数据）
+
+Consumer：消息和数据消费者，接收topics并处理其发布的消息的过程叫做consumer，同一个topic的数据可以被多个consumer接收
+
+Consumer Group （CG）：消费者组，由多个consumer组成。每个消费者组只能消费相同的消息一次，消费者组内每个消费者负责消费不同分区的数据，一个分区只能由一个组内消费者消费；消费者组之间互不影响。所有的消费者都属于某个消费者组，即消费者组是逻辑上的一个订阅者。
 
 Broker：缓存代理，Kafka集群中的一台或多台服务器统称为broker。一台kafka服务器就是一个broker。一个集群由多个broker组成。一个broker可以容纳多个topic
 
-Producers：消息和数据生产者，向Kafka的一个topic发送消息的过程叫做producers（producer可以选择向topic哪一个partition发送数据）
+Topic：特指Kafka处理的消息源的不同分类，其实也可以理解为对不同消息源的区分的一个标识，或者是一个消息队列。
 
-Consumers：消息和数据消费者，接收topics并处理其发布的消息的过程叫做consumer，同一个topic的数据可以被多个consumer接收
+Partition：Topic物理上的分组，为了实现扩展性，一个非常大的 topic 可以分布到多个 broker（即服务器）上。一个topic可以设置为多个partition，每个partition都是一个有序的队列，partition中的每条消息都会被分配一个有序的id（offset）。
 
-Consumer Group （CG）：这是kafka用来实现一个topic消息的广播（发给所有的consumer）和单播（发给任意一个consumer）的手段。一个topic可以有多个CG。topic的消息会复制（不是真的复制，是概念上的）到所有的CG，但每个partion只会把消息发给该CG中的一个consumer。如果需要实现广播，只要每个consumer有一个独立的CG就可以了。要实现单播只要所有的consumer在同一个CG。用CG还可以将consumer进行自由的分组而不需要多次发送消息到不同的topic。
+Replica：副本，为保证集群中的某个节点发生故障时，该节点上的 partition 数据不丢失，且 kafka 仍然能够继续工作，kafka 提供了副本机制，一个 topic 的每个分区都有若干个副本，一个 leader 和若干个 follower。
 
-Topic：特指Kafka处理的消息源的不同分类，其实也可以理解为对不同消息源的区分的一个标识
+leader：每个分区多个副本的“主”，生产者发送数据的对象，以及消费者消费数据的对象都是 leader。
 
-Partition：Topic物理上的分组，一个topic可以设置为多个partition，每个partition都是一个有序的队列，partition中的每条消息都会被分配一个有序的id（offset）
-
-Message：消息，是通信的基本单位，每个producer可以向一个topic（主题）发送一些消息
+follower：每个分区多个副本中的“从”，实时从 leader 中同步数据，保持和 leader 数据的同步。leader 发生故障时，某个 follower 会成为新的 follower。
 
 
 ### Topic

@@ -62,7 +62,7 @@ $$
 
 “多数表决”分类会在类别分布偏斜时出现缺陷。也就是说，出现频率较多的样本将会主导测试点的预测结果，因为他们比较大可能出现在测试点的K邻域而测试点的属性又是通过k邻域内的样本计算出来的。解决这个缺点的方法之一是在进行分类时将样本到k个近邻点的距离考虑进去。k近邻点中每一个的分类（对于回归问题来说，是数值）都乘以与测试点之间距离的成反比的权重。另一种克服偏斜的方式是通过数据表示形式的抽象。例如，在自组织映射（SOM）中，每个节点是相似的点的一个集群的代表（中心），而与它们在原始训练数据的密度无关。K-NN可以应用到SOM中。
 
-k-最近邻分类器可以被视为 为k最近邻分配权重 1/k ，为其他所有邻居分配权重 0，这也可以推广高加权最近邻分类器。也就是说，第i近的邻居被赋予权重$\omega_{ni}$，其中， 
+k-最近邻分类器可以被视为 为k最近邻分配权重 1/k ，为其他所有邻居分配权重 0，这也可以推广高加权最近邻分类器。也就是说，第i近的邻居被赋予权重$\omega_{ni}$，其中，
 $$
 \sum_{i=1}^{n}\omega_{ni}
 $$
@@ -86,11 +86,311 @@ $$
 d((y_i,...,y_n),(z_1,...,z_n)) = \sqrt{\sum_{j=1}^n(\frac{y_j}{M_j} - \frac{z_j}{M_j})^2}
 $$
 
+
+## 样例代码
+
+### 1.准备数据：
+
+```python
+import numpy as np
+import matplotlib.pyplot as plt
+
+# raw_data_x是特征，
+# raw_data_y是标签，
+# 0为良性，1为恶性
+raw_data_x = [
+    [3.393533211, 2.331273381],
+    [3.110073483, 1.781539638],
+    [1.343853454, 3.368312451],
+    [3.582294121, 4.679917921],
+    [2.280362211, 2.866990212],
+    [7.423436752, 4.685324231],
+    [5.745231231, 3.532131321],
+    [9.172112222, 2.511113104],
+    [7.927841231, 3.421455345],
+    [7.939831414, 0.791631213]
+]
+raw_data_y = [0, 0, 0, 0, 0, 1, 1, 1, 1, 1]  # 设置训练组
+X_train = np.array(raw_data_X)
+y_train = np.array(raw_data_y)
+# 将数据可视化
+plt.scatter(X_train[y_train == 0, 0], X_train[y_train == 0, 1], color='g', label='X')
+plt.scatter(X_train[y_train == 1, 0], X_train[y_train == 1, 1], color='r', label='Y')
+plt.axis([0, 10, 0, 5])
+plt.show()
+```
+
+![](../../.gitbook/assets/algorithm/ml/knnData.png)
+
+横纵坐标是两个特征维度，构成了二维平面特征中的一个点，红绿颜色是分类的标签
+
+
+### 2.计算距离
+
+给出一个样本点 x ： `[5.90933607318, 3.365731514]`
+
+给黄色x分类是红类还是绿类
+
+![](../../.gitbook/assets/algorithm/ml/knnPredict.png)
+
+此处使用欧氏距离计算距离。
+
+$$
+\sqrt{\sum_{i=1}^n (x_i - y_i)^2}
+$$
+
+```python
+from math import sqrt
+
+# 用来记录x到样本数据集中每个点的距离
+x = [8.90933607318, 3.365731514]
+# 将数据可视化
+plt.scatter(X_train[y_train == 0, 0], X_train[y_train == 0, 1], color='g', label='X')
+plt.scatter(X_train[y_train == 1, 0], X_train[y_train == 1, 1], color='r', label='Y')
+plt.scatter(x[0], x[1], color='y', label='P')
+plt.axis([0, 10, 0, 5])
+plt.show()
+
+distances = []
+for x_train in X_train:
+    d = sqrt(np.sum((x_train - x) ** 2))
+    distances.append(
+        d)
+# 使用列表生成器，一行就能搞定，对于X_train中的每一个元素x_train都进行前面的运算，把结果生成一个列表
+distances = [sqrt(np.sum((x_train - x) ** 2)) for x_train in X_train]
+
+print("distances：")
+print(distances)
+# 输出：[2.720177874750644, 3.2164475666122163, 4.56548334870148, 2.6724913768896017, 3.6630853359847193, 2.0084386483939767, 0.23370771274512972, 3.372844619015172, 2.01927418085986, 3.2785520719823893]   为x与各样本点的距离
+```
+
+### 3.根据k进行归类
+```python
+k = 5
+topK_y = [y_train[i] for i in nearest[:k]]
+print(f"top{k}：")
+print(topK_y)
+# 输出：[1, 1, 1, 0, 0]   设置k的值为5,取前5的分类
+
+
+from collections import Counter
+
+votes = Counter(topK_y)
+print("votes：")
+print(votes)
+# 输出：Counter({1: 3, 0: 2})   一个字典，原数组中值为0的个数为2，值为1的个数有为3
+
+# Counter.most_common(n) 找出票数最多的n个元素，返回的是一个列表，列表中的每个元素是一个元组，元组中第一个元素是对应的元素是谁，第二个元素是频次
+predict_y = votes.most_common(1)[0][0]
+# votes.most_common(1) 是 [(1, 3)]
+print("predict_y：")
+print(predict_y)
+# 输出：1 归类结果为1（红色）
+```
+
+### 完整工程代码
+下面是一个 sklearn 风格的 简易kNN算法
+
+```python
+import numpy as np
+from math import sqrt
+from collections import Counter
+
+
+class kNNClassifier:
+
+    def __init__(self, k):
+        """初始化分类器"""
+        assert k >= 1, "k must be valid"
+        self.k = k
+        self._X_train = None
+        self._y_train = None
+
+    def fit(self, X_train, y_train):
+        """根据训练数据集X_train和y_train训练kNN分类器"""
+        assert X_train.shape[0] == y_train.shape[0], \
+            "the size of X_train must be equal to the size of y_train"
+        assert self.k <= X_train.shape[0], \
+            "the size of X_train must be at least k"
+        self._X_train = X_train
+        self._y_train = y_train
+        return self
+
+    def predict(self, X_predict):
+        """给定待预测数据集X_predict，返回表示X_predict结果的向量"""
+        assert self._X_train is not None and self._y_train is not None, \
+            "must fit before predict!"
+        assert X_predict.shape[1] == self._X_train.shape[1], \
+            "the feature number of X_predict must be equal to X_train"
+        y_predict = [self._predict(x) for x in X_predict]
+        # y_predict = [self._predict(x) for x in self._X_train]
+        return np.array(y_predict)
+
+    def _predict(self, x):
+        """求待预测数据集X_predict与_X_train的预测值"""
+        distances = [sqrt(np.sum((x_train - x) ** 2)) for x_train in self._X_train]
+        nearest = np.argsort(distances)
+        topK_y = [self._y_train[i] for i in nearest[:self.k]]
+        votes = Counter(topK_y)
+        return votes.most_common(1)[0][0]
+
+    def __repr__(self):
+        return "kNN(k=%d)" % self.k
+```
+
+调用时，
+```python
+# 设置初始k值
+knnclf = kNNClassifier(k=5)
+# 设置kNN分类器预置分类参数
+knn_clf.fit(X_train, y_train)
+# 放入样本点给分类器进行分类
+X_predict = x.reshape(1,-1)
+y_predict = knn_clf.predict(X_predict)
+```
+
+### 生成训练数据
+
+iris_train_test
+
+iris数据集是UCI数据库中常用数据集
+```python
+from sklearn import datasets
+
+
+iris = datasets.load_iris()
+
+X = iris.data
+y = iris.target
+```
+
+tarin_test_split，可以分割训练集和测试集合，可以简单的测试模型的性能。
+```python
+import numpy as np
+
+
+def train_test_split(X, y, test_ratio=0.2, seed=None):
+    """将矩阵X和标签y按照test_ration分割成X_train, X_test, y_train, y_test"""
+    assert X.shape[0] == y.shape[0], \
+        "the size of X must be equal to the size of y"
+    assert 0.0 <= test_ratio <= 1.0, \
+        "test_train must be valid"
+    # 是否使用随机种子，使随机结果相同，方便debug
+    if seed:
+        # permutation(n) 可直接生成一个随机排列的数组，含有n个元素
+        np.random.seed(seed)
+    shuffle_index = np.random.permutation(len(X))
+
+    test_size = int(len(X) * test_ratio)
+    test_index = shuffle_index[:test_size]
+    train_index = shuffle_index[test_size:]
+    X_train = X[train_index]
+    X_test = X[test_index]
+    y_train = y[train_index]
+    y_test = y[test_index]
+    return X_train, X_test, y_train, y_test
+```
+
+用之前的kNN测试一下：
+
+```python
+kNNcls = kNNClassifier(k=3)
+kNNcls.fit(X_train, y_train)
+
+y_predict = kNNcls.predict(X_test)
+print(y_predict)
+# [0 1 2 2 0 0 1 1 1 2 1 0 1 0 1 0 2 2 2 0 2 0 2 1 1 2 1 1 0 0]
+print(y_test)
+# [0 1 2 2 0 0 1 1 1 2 1 0 2 0 1 0 2 2 2 0 2 0 2 1 1 2 1 1 0 0]
+# 两个向量的比较，返回一个布尔型向量，对这个布尔向量（faluse=1，true=0）sum，
+print(sum(y_predict == y_test))
+# 29
+print(sum(y_predict == y_test) / len(y_test))
+# 0.9666666666666667
+```
+
+### 超参数
+
+超参数，就是在机器学习算法模型执行之前需要指定的参数。（调参调的就是超参数）如kNN算法中的k。
+
+与之相对的概念是模型参数，即算法过程中学习的属于这个模型的参数（kNN中没有模型参数，回归算法有很多模型参数）
+
+如何选择最佳的超参数，这是机器学习中的一个永恒的问题。在实际业务场景中，调参的难度大很多，一般我们会业务领域知识、经验数值、实验搜索等方面获得最佳参数。
+
+#### 寻找好的k
+
+针对于上一小节的手写数字识别分类代码，尝试寻找最好的k值。逻辑非常简单，就是设定一个初始化的分数，然后循环更新k值，找到最好的score
+
+```python
+# 指定最佳值的分数，初始化为0.0；设置最佳值k，初始值为-1
+best_score = 0.0
+best_k = -1
+for k in range(1, 11):
+    # 暂且设定到1～11的范围内
+    knn_clf = KNeighborsClassifier(n_neighbors=k)
+    knn_clf.fit(X_train, y_train)
+    score = knn_clf.score(X_test, y_test)
+    if score > best_score:
+        best_k = k
+        best_score = score
+print("best_k = ", best_k)
+print("best_score = ", best_score)
+
+# 输出：
+# best_k = 4
+# best_score = 0.9666666666666667
+```
+这里可以看到这次生成的测试数据中，最好的k值是4
+
+需要注意的是，如果我们的到的值正好在边界上，我们需要稍微扩展一下取值范围。
+
+#### 另一个超参数：权重
+
+距离样本数据点最近的节点，对其影响最大，那么我们使用距离的倒数作为权重。假设距离样本点最近的三个节点分别是红色、蓝色、蓝色，距离分别是1、4、3。那么普通的k近邻算法：蓝色获胜。考虑权重（距离的倒数）：红色：1，蓝色：1/3 + 1/4 = 7/12，红色胜。
+
+在 sklearn.neighbors 的构造函数 KNeighborsClassifier 中有一个参数：weights，默认是uniform即不考虑距离，也可以写distance来考虑距离权重(默认是欧拉距离，如果要是曼哈顿距离，则可以写参数p（明可夫斯基距离的参数），这个也是超参数)
+
+因为有两个超参数，因此使用双重循环，去查找最合适的两个参数，并打印。
+```python
+from sklearn.neighbors import KNeighborsClassifier
+# 两种方式进行比较
+best_method = ""
+best_score = 0.0
+best_k = -1
+for method in ["uniform","distance"]:
+    for k in range(1, 11):
+        knn_clf = KNeighborsClassifier(n_neighbors=k, weights=method, p=2)
+        knn_clf.fit(X_train, y_train)
+        score = knn_clf.score(X_test, y_test)
+        if score > best_score:
+            best_k = k
+            best_score = score
+            best_method = method
+print("best_method = ", method)
+print("best_k = ", best_k)
+print("best_score = ", best_score)
+
+# 输出：
+# best_method =  distance
+# best_k =  5
+# best_score =  0.9666666666666667
+```
+
+
 ## 总结
 
 K近邻算法是最简单有效的分类算法，简单且容易实现。但是当训练数据集很大时，需要占用大量的存储空间，而且需要计算的量比较大，时间复杂度为O(n)，当数据量较大时，可以将数据以树的形式呈现，能提高速度。
 
 适用于类内间距小，类间间距大的数据集，并且对于类间边界分布不规则的数据效果要好于线性的分类器。
+
+### 需要注意的问题
+
+1. 大数吞小数  
+在进行距离计算的时候，有时候某个特征的数值会特别的大，那么计算欧式距离的时候，其他的特征的值的影响就会非常的小被大数给覆盖掉了。所以我们很有必要进行特征的标准化或者叫做特征的归一化。
+2. 如何处理大数据量  
+一旦特征或者样本的数目特别的多，KNN的时间复杂度将会非常的高。解决方法是利用KD-Tree这种方式解决时间复杂度的问题，利用KD树可以将时间复杂度降到O(logD*N*N)。D是维度数，N是样本数。但是这样维度很多的话那么时间复杂度还是非常的高，所以可以利用类似哈希算法解决高维空间问题，只不过该算法得到的解是近似解，不是完全解。会损失精确率。
+3. 怎么处理样本的重要性  
+利用权重值。我们在计算距离的时候可以针对不同的邻居使用不同的权重值，比如距离越近的邻居我们使用的权重值偏大，这个可以指定算法的weights参数来设置。
 
 
 ## k-NN 与 K-means
@@ -107,6 +407,4 @@ K近邻算法是最简单有效的分类算法，简单且容易实现。但是�
 - k-NN是带Label的数据集，K-means是无Label的数据集
 - k-NN无明显的训练过程，基于Memory-based learning。而K-means有明显的训练过程
 - k-NN的k是对于分类的数据找最近的k个数据点，将其划分类别。而K-means则是把数据集反划分为K个簇。
-
-
 
