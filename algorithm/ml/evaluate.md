@@ -23,6 +23,7 @@
 > - 假负(False Negative, FN)：被模型分类错误的正样本。
 > - 假正(False Positive, FP)：被模型分类的负样本。
 > - 真负(True Negative, TN)：被模型分类正确的负样本。
+
 由混淆矩阵可以计算这些评价指标： 准确率，平均准确率，精确率-召回率，F1-Score，ROC曲线
 
 #### 准确率 Accuracy
