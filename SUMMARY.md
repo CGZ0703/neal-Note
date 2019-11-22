@@ -26,7 +26,7 @@
     * [Scala使用](scala/scala-shi-yong.md)
 * [MySQL](mysql/README.md)
   * [MySQL事务](mysql/mysql-shi-wu.md)
-  * [MySQL插入多条数据性能优化](mysql/mysql-you-hua-innodb_flush_log_at_trx_commit.md)
+  * [MySQL插入多条数据时遇到的问题](mysql/mysql-you-hua-innodb_flush_log_at_trx_commit.md)
   * [MySQL经典50题](mysql/mysql-jing-dian-50-ti.md)
 * [Linux](linux/README.md)
   * [Linux](linux/README.md)
@@ -69,4 +69,6 @@
   * [Kafka](data/kafka/README.md)
     * [Kafka文件存储](data/kafka/kafka-file.md)
     * [偏移量提交 与 分区再平衡](data/kafka/kafka-offset.md)
+  * [Flink](data/flink/README.md)
+    * [Flink遇到的坑](data/flink/flink-problem.md)
 
