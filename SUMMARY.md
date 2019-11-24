@@ -9,7 +9,8 @@
   * [Machine Learning](algorithm/ml/README.md)
     * [k-近邻算法](algorithm/ml/knn.md)
     * [TF-IDF 特征加权](algorithm/ml/tf-idf.md)
-    * [机器学习模型评价(一)](algorithm/ml/evaluate.md)
+    * [机器学习模型评价](algorithm/ml/evaluate.md)
+    * [数据的归一化和标准化](algorithm/ml/normalization.md)
 * [Programming Language]()
   <!-- * [DesignPattern](designPattern/README.md) -->
   * [Java](java/README.md)

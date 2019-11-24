@@ -16,7 +16,7 @@ description: Lombok makes java cool again!
 
 Lombok是一个编译器插件，在编译器处理源代码之前，将其中的注释转换为java语句，所以在运行时不需要提供Lombok的依赖。因此，需要将Lombok添加到构建工具中，比如maven：
 
-```text
+```xml
 ///gradle
 plugins {
     id 'io.franzbecker.gradle-lombok' version '1.14'
@@ -54,7 +54,7 @@ lombok {
 
 普遍的开发中，我们会写很多的toString，getter和setter方法，这会让我们的代码看起来很长，并且其中大部分都是重复的工作，使用Lombok可以使POJO更加简洁明了，无需编写更多的代码，使用Lombok，我们可以用@Data注释来简化最基本的POJO：
 
-```text
+```java
 @Data
 public class User {
     private UUID userId;
@@ -71,7 +71,7 @@ public class User {
 
 一个注解虽然简单，但是会让程序增加复杂性及限制了并发量，可以使用其他一些有用的Lombok注解来标注每一个属性。
 
-```text
+```java
 @Value
 @Builder(toBuilder = true)
 public class User {
@@ -91,7 +91,7 @@ public class User {
 
 但是，如果只能用all args构造函数创建对象，那么不可变是不太有用的。Joshua Bloch在 《Effective Java》解释，当面临着许多构造函数时，应该使用建造者。这就是Lombok的@Builder的作用，自动生成构建器内部类：
 
-```text
+```java
 User user = User.builder()
     .userId(UUID.random())
     .email("cgz@cgz.com")
