@@ -67,6 +67,7 @@
     * [Spark基础](data/spark/spark-core.md)
     * [Spark SQL](data/spark/spark-sql.md)
     * [Spark Streaming](data/spark/spark-streaming.md)
+    * [Spark On Yarn](data/spark/spark-on-yarn.md)
   * [Kafka](data/kafka/README.md)
     * [Kafka文件存储](data/kafka/kafka-file.md)
     * [偏移量提交 与 分区再平衡](data/kafka/kafka-offset.md)
