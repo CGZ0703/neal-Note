@@ -6,6 +6,7 @@
   * [Normal](algorithm/normal/README.md)
     * [一致性哈希分布](algorithm/normal/yi-zhi-xing-ha-xi-suan-fa.md)
     * [A star 寻路](algorithm/normal/Astar.md)
+    * [蓄水池抽样 Reservoir Sampling](algorithm/normal/reservoir-sampling.md)
   * [Machine Learning](algorithm/ml/README.md)
     * [k-近邻算法](algorithm/ml/knn.md)
     * [TF-IDF 特征加权](algorithm/ml/tf-idf.md)
@@ -68,6 +69,9 @@
     * [Spark SQL](data/spark/spark-sql.md)
     * [Spark Streaming](data/spark/spark-streaming.md)
     * [Spark On Yarn](data/spark/spark-on-yarn.md)
+    <!-- * [Tuning Spark](data/spark/tuning-spark.md) -->
+    <!-- * [Spark Operations](data/spark/spark-operations.md) -->
+    <!-- * [Spark SQL 之 Join](data/spark/spark-join.md) -->
   * [Kafka](data/kafka/README.md)
     * [Kafka文件存储](data/kafka/kafka-file.md)
     * [偏移量提交 与 分区再平衡](data/kafka/kafka-offset.md)
