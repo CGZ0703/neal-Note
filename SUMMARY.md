@@ -47,6 +47,7 @@
       * [Docker运行Hadoop](data/hadoop/docker-yun-xing-hadoop.md)
     * [Hdfs](data/hadoop/hdfs/README.md)
       * [HDFS块丢失过多导致进入安全模式](data/hadoop/hdfs/hdfs-repair-block-safe-mode.md)
+    * [Sqoop](data/hadoop/sqoop.md)
       <!-- * [HDFS写流程](hadoop/hdfs/hdfs-write.md) -->
       <!-- * [Hbase读流程](hadoop/hdfs/hdfs-read.md) -->
     <!-- * [MapReduce](data/mapreduce/README.md) -->
@@ -63,7 +64,6 @@
     <!-- * [Hbase写流程](data/hbase/hbase-write.md) -->
     <!-- * [Hbase读流程](data/hbase/hbase-read.md) -->
     * [Hbase的Bloom Filters](data/hbase/bloom-filters.md)
-  <!-- * [Sqoop](data/sqoop/README.md) -->
   <!-- * [DataX](data/datax/README.md) -->
   * [Spark](data/spark/README.md)
     * [Spark基础](data/spark/spark-core.md)
