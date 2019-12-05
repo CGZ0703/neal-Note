@@ -41,13 +41,15 @@
     * [Docker容器](linux/docker/docker-rong-qi.md)
     * [Docker镜像](linux/docker/docker-jing-xiang.md)
     * [Docker创建本地镜像](linux/docker/docker-chuang-jian-ben-di-jing-xiang.md)
-* [Data]()
+* [Data](data/README.md)
+  * [DataWarehouse](data/dw/README.md)
+    * [Sqoop](data/dw/sqoop.md)
+    * [多维计算](data/dw/multi-dim-kylin.md)
   * [Hadoop](data/hadoop/README.md)
     * [Hadoop](data/hadoop/README.md)
       * [Docker运行Hadoop](data/hadoop/docker-yun-xing-hadoop.md)
     * [Hdfs](data/hadoop/hdfs/README.md)
       * [HDFS块丢失过多导致进入安全模式](data/hadoop/hdfs/hdfs-repair-block-safe-mode.md)
-    * [Sqoop](data/hadoop/sqoop.md)
       <!-- * [HDFS写流程](hadoop/hdfs/hdfs-write.md) -->
       <!-- * [Hbase读流程](hadoop/hdfs/hdfs-read.md) -->
     <!-- * [MapReduce](data/mapreduce/README.md) -->
