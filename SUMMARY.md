@@ -9,6 +9,7 @@
     * [蓄水池抽样 Reservoir Sampling](algorithm/normal/reservoir-sampling.md)
   * [Machine Learning](algorithm/ml/README.md)
     * [k-近邻算法](algorithm/ml/knn.md)
+    * [kd-Tree算法](algorithm/ml/kd-tree.md)
     * [TF-IDF 特征加权](algorithm/ml/tf-idf.md)
     * [机器学习模型评价](algorithm/ml/evaluate.md)
     * [数据的归一化和标准化](algorithm/ml/normalization.md)
