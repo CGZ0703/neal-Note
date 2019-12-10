@@ -51,8 +51,10 @@
       * [Docker运行Hadoop](data/hadoop/docker-yun-xing-hadoop.md)
     * [Hdfs](data/hadoop/hdfs/README.md)
       * [HDFS块丢失过多导致进入安全模式](data/hadoop/hdfs/hdfs-repair-block-safe-mode.md)
-      <!-- * [HDFS写流程](hadoop/hdfs/hdfs-write.md) -->
-      <!-- * [Hbase读流程](hadoop/hdfs/hdfs-read.md) -->
+      * [NameNode内存解析](data/hadoop/hdfs/hdfs-nn-memonery.md)
+      * [HDFS的Router-Based Federation](data/hadoop/hdfs/router-based-hdfs.md)
+      <!-- * [HDFS写流程](data/hadoop/hdfs/hdfs-write.md) -->
+      <!-- * [Hbase读流程](data/hadoop/hdfs/hdfs-read.md) -->
     <!-- * [MapReduce](data/mapreduce/README.md) -->
   * [Hive](data/hive/README.md)
     * [Hive安装配置](data/hive/hive-an-zhuang-pei-zhi.md)

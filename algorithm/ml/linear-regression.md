@@ -64,7 +64,7 @@ $$
 那么上面的公式我们如何求得参数w,b呢？这里需要一些微积分（calculus)的知识。
 
 $$
-E_{w,b} = \sum_{i=1}^m (y_i - wx_i - b)
+E_{w,b} = \sum_{i=1}^m (y_i - wx_i - b)^2
 $$
 
 E是关于(w,b)的凸函数(也就是boat shape的函数，只有一个最小值)，E在最小值时的(w,b)就是我们所需要求的参数值。
@@ -93,6 +93,7 @@ $$
 
 $$
 w = \frac{\sum_{i=1}^m y_i(x_i - \overline{x})}{\sum_{i=1}^m x_i^2 - \frac{1}{m} (\sum_{i=1}^m x_i)^2}\\
+~~~~~~~~~~~~~~\\
 b = \frac{1}{m} \sum_{i=1}^m (y_i - wx_i)
 $$
 
