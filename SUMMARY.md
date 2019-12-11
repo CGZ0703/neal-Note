@@ -75,7 +75,8 @@
     * [Spark SQL](data/spark/spark-sql.md)
     * [Spark Streaming](data/spark/spark-streaming.md)
     * [Spark On Yarn](data/spark/spark-on-yarn.md)
-    * [Tuning Spark 数据序列化和内存调整](data/spark/spark-tuning-data-memory.md)
+    * [Tuning Spark 数据序列化和内存调整](data/spark/tuning-spark-data-memory.md)
+    * [Tuning Spark Job](data/spark/tuning-spark-job.md)
     <!-- * [Spark Operations](data/spark/spark-operations.md) -->
     <!-- * [Spark SQL 之 Join](data/spark/spark-join.md) -->
   * [Kafka](data/kafka/README.md)
