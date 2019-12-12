@@ -32,6 +32,18 @@ Kryo的文档中有详细描述了更多的高级选项，如：自定义序列�
 
 最后，如果你不注册需要序列化的自定义类型，Kryo也能工作，不过每一个对象实例的序列化结果都会包含一份完整的类名，这有点浪费空间。
 
+### ERROR OneForOneStrategy
+
+如果你在 Spark Streaming 里启用 checkpointing，forEachRDD 函数使用的对象都应该可以被序列化(Serializable)。否则会出现这样的异常 `"ERROR OneForOneStrategy: ... java.io.NotSerializableException:"`
+
+有以下三种方式都可以解决：
+
+- 在配置文件里面删除 jssc.checkpoint 这一行关闭 checkpointing。
+- 让对象能被序列化。
+- 在 forEachRDD 函数里面声明 NotSerializable。
+
+
+
 ## 2 Memory Tuning
 
 内存占用调优主要需要考虑3点：数据占用的总内存（你会希望整个数据集都能装进内存）；访问数据集中每个对象的开销；垃圾回收的开销（如果你的数据集中对象周转速度很快的话）。
@@ -129,6 +141,8 @@ broadcastVar.value
 ### 3.4 Data Locality
 
 数据本地性对Spark作业的性能往往会有较大的影响。如果代码和其所操作的数据在同一节点上，那么计算速度肯定会更快一些。但如果二者不在一起，那必然需要移动其中之一。一般来说，移动序列化好的代码肯定比挪动一大堆数据要快。Spark就是基于这个一般性原则来构建数据本地性的调度。
+
+检查任务是否在本地运行的最好方式是在 Spark UI 上查看 stage 信息，可以在Tasks的Locality Level中看到本地性级别。
 
 数据本地性是指代码和其所处理的数据的距离。基于数据当前的位置，数据本地性可以划分成以下几个层次（按从近到远排序）：
 

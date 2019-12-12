@@ -115,7 +115,7 @@ $$
 > 
 > 设f是R^n中区域D上的数量场，如果f在 P0属于D 处可微，称向量
 > $$
-> ( \frac{\partial f}{\partial x_1}, \frac{\partial f}{\partial x_2},..., \frac{\partial f}{\partial x_n} ) |_{P_0}
+> \left( \frac{\partial f}{\partial x_1}, \frac{\partial f}{\partial x_2},..., \frac{\partial f}{\partial x_n} \right) |_{P_0}
 > $$
 > 为 f 在 P0 处的梯度，记做 ***grad*** f(P0)
 > 
