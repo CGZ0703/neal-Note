@@ -14,6 +14,8 @@
     * [机器学习模型评价](algorithm/ml/evaluate.md)
     * [数据的归一化和标准化](algorithm/ml/normalization.md)
     * [线性回归 - "模型之母"](algorithm/ml/linear-regression.md)
+    * [逻辑回归 - "出场率最高算法"](algorithm/ml/logistic-regression.md)
+    * [决策树]()
 * [Programming Language]()
   <!-- * [DesignPattern](designPattern/README.md) -->
   * [Java](java/README.md)
