@@ -4,13 +4,16 @@
 
 Kafka大量使用了pagecache，以提高消息的读写速度
 
-现代Unix操作系统提供了一种数据从pagecache到socket的高度优化的编码路径，sendfile，数据从file到socket的传输路径：
+现代Unix操作系统提供了一种数据从pagecache到socket的高度优化的编码路径，sendfile
+
+数据从file到socket的传输路径：
 
 1. 操作系统从硬盘(disk)读取数据到内核空间(kernel space)的页面缓存(pagecache)中
 2. 应用将数据从内核空间(kernel space)读入到用户的空间缓存(user-space buffer)中
 3. 应用将数据写回内核空间(kernel space)的套接字缓冲区(_(socket buffer)中
 4. 操作系统从套接字缓冲区(socket buffer)复制数据到通过网络发送的NIC缓冲区(NIC buffer)
 
+这显然是低效的，有四次复制和两次系统调用。使用sendfile，可以通过允许系统将数据从页面缓存(pagecache)直接发送到网络(network)来避免这种重新复制。因此，在此优化路径中，仅需要最终复制到NIC缓冲区。
 
 ## 数据文件存储
 
