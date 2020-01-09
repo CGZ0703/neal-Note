@@ -12,7 +12,7 @@
 
 详情见[Spark Job exec](./spark-on-yarn#spark-job-zhi-hang-liu-cheng)
 
- 一个Spark应用包括一个driver进程和若干个分布在集群的各个节点上的executor进程。
+一个Spark应用包括一个driver进程和若干个分布在集群的各个节点上的executor进程。
 
 driver主要负责调度一些高层次的任务流（flow of work）。exectuor负责执行这些任务，这些任务以task的形式存在， 同时存储用户设置需要caching的数据。 task和所有的executor的生命周期为程序的整个运行过程（如果使用了dynamic resource allocation时可能不是这样的）。一个executor可以运行多个任务，任务的运行是并行的。如何调度这些进程是通过集群管理框架完成的（比如YARN，Mesos，Spark Standalone），任何一个Spark程序都会包含一个driver和多个executor进程。
 
